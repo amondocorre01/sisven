@@ -1,2 +1,0 @@
-# posSystem
-Developer: Guido Alcón
