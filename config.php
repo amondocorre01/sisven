@@ -67,7 +67,7 @@ $sql_details = array(
 	 *
 	 * This is usefull when you will host the app inside a subdirectory of root
 	 */
-	define('SUBDIRECTORY', 'amondocorre/posSystem');
+	define('SUBDIRECTORY', '/sisven');
 
 
 	/*
@@ -77,7 +77,7 @@ $sql_details = array(
 	 *
 	 * If you use FTP for filemanger then just left it as blank
 	 */
-	define('FILEMANAGERPATH', ROOT.'amondocorre/storage/products/');
+	define('FILEMANAGERPATH', ROOT.'/storage/products/');
 
 
 	/*
@@ -88,7 +88,7 @@ $sql_details = array(
 	 * If you use FTP for filemanger then just left it as blank
 	 * Example: http://modernpos/storage directory
 	 */
-	define('FILEMANAGERURL', 'http://localhost/amondocorre/posSystem/storage/products');
+	define('FILEMANAGERURL', 'https://www.vanguardsolutionsbolivia.com/sisven/storage/products');
 
 
 	/*
