@@ -14,7 +14,6 @@
         <input type="text" class="form-control" id="customer_name" value="<?php echo isset($request->post['customer_name']) ? $request->post['customer_name'] : null; ?>" name="customer_name" required>
       </div>
     </div>
-
     <div class="form-group">
       <label for="credit_balance" class="col-sm-3 control-label">
         <?php echo sprintf(trans('label_credit_balance'), null); ?>
