@@ -88,7 +88,7 @@ $sql_details = array(
 	 * If you use FTP for filemanger then just left it as blank
 	 * Example: http://modernpos/storage directory
 	 */
-	define('FILEMANAGERURL', 'https://www.vanguardsolutionsbolivia.com/sisven/storage/products');
+	define('FILEMANAGERURL', 'https://localhost/sisven/storage/products');
 
 
 	/*

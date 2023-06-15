@@ -1,3 +1,7 @@
+<!--MAP-->
+<link rel="stylesheet" href="../assets/plugins/leaflet/leaflet.css" crossorigin="" />
+<script src="../assets/plugins/leaflet/leaflet.js" crossorigin=""></script>
+
 <form id="create-customer-form" class="form-horizontal" action="customer.php" method="post" enctype="multipart/form-data">
   <input type="hidden" id="action_type" name="action_type" value="CREATE">
   <div class="box-body">
@@ -100,7 +104,20 @@
         <?php echo sprintf(trans('label_city'), null); ?>
       </label>
       <div class="col-sm-7">
-        <input type="text" class="form-control" id="customer_city" value="<?php echo isset($request->post['customer_city']) ? $request->post['customer_city'] : null; ?>" name="customer_city">
+        <!--<input type="text" class="form-control" id="customer_city" value="<?php echo isset($request->post['customer_city']) ? $request->post['customer_city'] : null; ?>" name="customer_city">-->
+        <select name="customer_city" id="customer_city">
+          <option value="">Seleccione</option>
+          <option value="1">Cochabamba</option>
+          <option value="2">La Paz</option>
+          <option value="3">Santa Cruz</option>
+          <option value="4">Oruro</option>
+          <option value="5">Potosi</option>
+          <option value="6">Tarija</option>
+          <option value="7">Chuquisaca</option>
+          <option value="8">Beni</option>
+          <option value="9">Pando</option>
+          <option value="10">Otro</option>
+        </select>
       </div>
     </div>
 
@@ -116,12 +133,20 @@
     <?php else : ?>
       <div class="form-group">
         <label for="customer_state" class="col-sm-3 control-label">
-          <?php echo sprintf(trans('label_state'), null); ?>
+          <?php //echo sprintf(trans('label_state'), null); ?>
+          UBICACION GEOREFERENCIAL
         </label>
         <div class="col-sm-7">
           <input type="text" class="form-control" id="customer_state" value="<?php echo isset($request->post['customer_state']) ? $request->post['customer_state'] : null; ?>" name="customer_state">
         </div>
       </div>
+      <div class="form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-7 align-center">
+          <div id="map" style="height: 30rem;"></div>
+        </div>
+      </div>
+      <br>
     <?php endif; ?>
 
     <div class="form-group">
@@ -201,3 +226,39 @@
 
   </div>
 </form>
+
+<script>
+  var map;
+  var marker;
+  $(document).ready(function () {
+         var latitud = -17.414;
+         var longitud = -66.1653;
+         //map = L.map('map').setView([latitud, longitud], 16);
+         var map = L.map('map').setView([51.505, -0.09], 13);
+
+         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+         }).addTo(map);
+          map.on('click', onMapClick);
+   });
+
+   function onMapClick(e) {
+    var lat = e.latlng.lat;
+    var long = e.latlng.lng;
+    if(marker != undefined) {
+        map.removeLayer(marker);
+    };
+    marker = L.marker([lat, long],  {draggable: 'true'}).addTo(map);
+    marker.on('dragend', function(event) {
+          var position = marker.getLatLng();
+          marker.setLatLng(position, {
+          draggable: 'true'
+          }).bindPopup(position).update();
+    });
+  };
+
+  function onMarkerDragEnd(e) {
+    var position = marker.getLatLng();
+  }
+</script>
