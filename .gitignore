@@ -3,7 +3,7 @@
 #old/
 #storage/
 #storage/qrcode.png
-#config.php
+config.php
 #error_log
 #access.log
 #error.log
