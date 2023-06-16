@@ -138,6 +138,8 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
             WHERE `p2s`.`store_id` = ? AND `p_id` = ?");
         $statement->execute(array($store_id, $id));
         $result = $statement->fetch(PDO::FETCH_ASSOC);
+        var_dump($result);
+        exit();
         if (!$result) {
           throw new Exception(trans('error_product_not_found'));
         }
@@ -249,10 +251,13 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
         
         // Insert purchase item
         $statement = db()->prepare("INSERT INTO `purchase_item` (invoice_id, store_id, item_id, category_id, brand_id, item_name, item_purchase_price, item_selling_price, item_quantity, status, item_total, item_tax, tax_method, tax, gst, cgst, sgst, igst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      
         $statement->execute(array($invoice_id, $store_id, $id, $category_id, $brand_id, $item_name, $item_purchase_price, $item_selling_price, $item_quantity, $status, $item_total, $item_tax, $tax_method, $taxrate, $taxrate, $cgst, $sgst, $igst));
         
         // Update stock quantity
         $statement = db()->prepare("UPDATE `product_to_store` SET `purchase_price` = ?, `sell_price` = ?, `quantity_in_stock` = `quantity_in_stock` + $item_quantity WHERE `product_id` = ? AND `store_id` = ?");
+       
+    
         $statement->execute(array($item_purchase_price, $item_selling_price, $id, $store_id));
     }
 

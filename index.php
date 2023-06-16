@@ -1,17 +1,5 @@
 <?php 
-/*
-| -----------------------------------------------------
-| PRODUCT NAME: 	Modern POS - Point of Sale with Stock Management System
-| -----------------------------------------------------
-| AUTHOR:     ITSOLUTION24.COM
-| -----------------------------------------------------
-| EMAIL:      info@itsolution24.com
-| -----------------------------------------------------
-| COPYRIGHT:    RESERVED BY ITSOLUTION24.COM
-| -----------------------------------------------------
-| WEBSITE:      http://itsolution24.com
-| -----------------------------------------------------
-*/
+
 include("_init.php");
 $document->setTitle(trans('text_login_title'));
 
@@ -299,7 +287,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
             <div class="input-group-addon input-sm">
               <svg class="svg-icon"><use href="#icon-avatar"></svg>
             </div>
-            <input type="text" class="form-control" value="tusolutionweb@gmail.com" placeholder="Email / Phone No." name="username">
+            <input type="text" class="form-control" value="adolfo@admin.com" placeholder="Email / Phone No." name="username">
           </div>
         </div>
 
@@ -308,7 +296,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
             <div class="input-group-addon input-sm">
               <svg class="svg-icon"><use href="#icon-password"></svg>
             </div>
-            <input type="password" class="form-control" value="tusolutionweb" placeholder="Password" name="password">
+            <input type="password" class="form-control" value="" placeholder="Password" name="password">
           </div>
         </div>
 
