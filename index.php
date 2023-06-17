@@ -287,7 +287,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
             <div class="input-group-addon input-sm">
               <svg class="svg-icon"><use href="#icon-avatar"></svg>
             </div>
-            <input type="text" class="form-control" value="admin@gmail.com" placeholder="Email / Phone No." name="username">
+            <input type="text" class="form-control" value="admin@gmail.comxxxxxxxxxxxxxx" placeholder="Email / Phone No." name="username">
           </div>
         </div>
 
