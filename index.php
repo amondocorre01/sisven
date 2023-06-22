@@ -367,6 +367,6 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
     <!-- Forgot Password Modal End -->
   <?php endif; ?>
 
-<noscript>You need to have javascript enabled in order to use <strong><?php echo store('name');?></strong>.</noscript>
+<noscript>You need to have javascript enabled in order to use.. <strong><?php echo store('name');?></strong>.</noscript>
 </body>
 </html>
