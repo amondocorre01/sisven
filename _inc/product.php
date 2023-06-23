@@ -57,14 +57,14 @@ function validate_request_data($request)
   if (!validateFloat($request->post['sell_price']) || $request->post['sell_price'] <= 0) {
     throw new Exception(trans('error_product_price'));
   }*/
-
+  /*
   if ($request->post['p_type'] == 'service') 
   {
     // Validate sell price
     if (!validateFloat($request->post['purchase_price']) && $request->post['purchase_price'] < 0) {
       throw new Exception(trans('error_product_cost'));
     }
-  }
+  }*/
 
   if ($request->post['p_type'] != 'service') 
   {
@@ -200,9 +200,10 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
     }
 
     // Validate sell price
+    /*
     if (!validateFloat($request->post['sell_price']) || $request->post['sell_price'] <= 0) {
       throw new Exception(trans('error_product_price'));
-    }
+    }*/
 
     $p_id = $request->post['p_id'];
 
