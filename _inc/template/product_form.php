@@ -209,7 +209,7 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group hide">
             <label for="barcode_symbology" class="col-sm-3 control-label">
               <?php echo trans('label_barcode_symbology'); ?><i class="required">*</i>
             </label>
@@ -226,7 +226,7 @@
             </div>
           </div>
 
-          <div ng-hide="hideBox" class="form-group">
+          <div ng-hide="hideBox" class="form-group hide">
             <label for="box_id" class="col-sm-3 control-label">
               <?php echo trans('label_box'); ?>
             </label>
@@ -256,16 +256,29 @@
               <?php echo trans('label_product_cost'); ?><i class="required">*</i>
             </label>
             <div class="col-sm-8">
-              <input type="text" step="0.01" class="form-control" id="purchase_price" value="<?php echo $product['purchase_price']; ?>" name="purchase_price" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" onKeyUp="if(this.value<0){this.value='1';}" required>
+              <input type="text" step="0.01" value="0" class="form-control" id="purchase_price" value="<?php echo $product['purchase_price']; ?>" name="purchase_price" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" onKeyUp="if(this.value<0){this.value='1';}" required>
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group hide">
             <label for="sell_price" class="col-sm-3 control-label">
               <?php echo trans('label_product_price'); ?><i class="required">*</i>
             </label>
             <div class="col-sm-8">
-              <input type="text" step="0.01" class="form-control" id="sell_price" value="<?php echo $product['sell_price']; ?>" name="sell_price" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" onKeyUp="if(this.value<0){this.value='1';}" required>
+              <input type="text" step="0.01" value="0" class="form-control" id="sell_price" value="<?php echo $product['sell_price']; ?>" name="sell_price" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" onKeyUp="if(this.value<0){this.value='1';}" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sell_category_price" class="col-sm-3 control-label">
+              <?php echo trans('label_product_price'); ?><i class="required">*</i>
+            </label>
+            <div class="col-sm-7">
+              <select name="sell_category_price" id="sell_category_price">
+                <option value="">Seleccione categoria</option>
+                <option value="1">Categoria 1</option>
+                <option value="2">Categoria 2</option>
+              </select>
             </div>
           </div>
 
@@ -314,7 +327,7 @@
           </div>
           <?php endif; ?>
 
-          <div class="form-group">
+          <div class="form-group hide">
             <label for="taxrate_id" class="col-sm-3 control-label">
               <?php echo trans('label_product_tax'); ?><i class="required">*</i>
             </label>
@@ -339,7 +352,7 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group hide">
             <label for="tax_method" class="col-sm-3 control-label">
               <?php echo trans('label_tax_method'); ?><i class="required">*</i>
             </label>
