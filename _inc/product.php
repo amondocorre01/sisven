@@ -53,9 +53,10 @@ function validate_request_data($request)
   }
 
   // Validate sell price
+  /*
   if (!validateFloat($request->post['sell_price']) || $request->post['sell_price'] <= 0) {
     throw new Exception(trans('error_product_price'));
-  }
+  }*/
 
   if ($request->post['p_type'] == 'service') 
   {
