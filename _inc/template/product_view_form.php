@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hide">
       <label for="barcode_symbology" class="col-sm-3 control-label">
         <?php echo trans('label_barcode_symbology'); ?>
       </label>
@@ -122,7 +122,7 @@
     </div>
 
     <?php if (user_group_id() == 1 || has_permission('access', 'show_purchase_price')) : ?>
-      <div class="form-group">
+      <div class="form-group hide">
         <label for="purchase_price"  class="col-sm-3 control-label">
           <?php echo trans('label_purchase_price'); ?>
         </label>
@@ -132,7 +132,7 @@
       </div>
     <?php endif; ?>
 
-    <div class="form-group">
+    <div class="form-group hide">
       <label for="sell_price" class="col-sm-3 control-label">
         <?php echo trans('label_sell_price'); ?>
       </label>
@@ -141,7 +141,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hide">
       <label for="quantity_in_stock" class="col-sm-3 control-label">
         <?php echo trans('label_stock'); ?>
        </label>
@@ -150,7 +150,7 @@
       </div>
     </div>  
 
-    <div class="form-group">
+    <div class="form-group hide">
       <label for="e_date" class="col-sm-3 control-label">
         <?php echo trans('label_expired_date'); ?>
        </label>
@@ -229,7 +229,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hide">
       <label for="tax_method" class="col-sm-3 control-label">
         <?php echo trans('label_tax_method'); ?>
       </label>
@@ -245,7 +245,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group hide">
       <label for="box_id" class="col-sm-3 control-label">
         <?php echo trans('label_box'); ?>
       </label>
