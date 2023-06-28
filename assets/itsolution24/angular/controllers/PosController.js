@@ -55,8 +55,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            //window.toastr.error("The discount amount isn't numeric!", "Warning!");
-            window.toastr.error("El monto de descuento no es numerico!", "Aviso!");
+            window.toastr.error("The discount amount isn't numeric!", "Warning!");
             return 0;
         }
         return (amount/100)*per;
@@ -118,7 +117,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error(response.data.errorMsg, "Aviso!");
+            window.toastr.error(response.data.errorMsg, "Warning!");
         });
     };
     $("#customer-name").on("click", function() {
@@ -142,7 +141,7 @@ function (
                 if (window.store.sound_effect == 1) {
                     window.storeApp.playSound("error.mp3");
                 }
-                window.toastr.error(response.data.errorMsg, "Aviso!");
+                window.toastr.error(response.data.errorMsg, "Warning!");
             });
         } else if (customer.customer_id) {
             var contact = customer.customer_mobile || customer.customer_email;
@@ -161,8 +160,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            //window.toastr.error("Oops!, Invalid customer", "Warning!");
-            window.toastr.error("Oops!, Cliente invalido", "Aviso!");
+            window.toastr.error("Oops!, Invalid customer", "Warning!");
         }
     };
     if (window.getParameterByName("customer_id")) {
@@ -232,7 +230,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error(response.data.errorMsg, "Aviso!");
+            window.toastr.error(response.data.errorMsg, "Warning!");
         });
     };
     $scope.showProductList();
@@ -357,8 +355,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            //window.toastr.error("Discount amount must be less than payable amount", "Warning!");
-            window.toastr.error("El monto descuento debe ser menor que la cantidad a pagar.", "Aviso!");
+            window.toastr.error("Discount amount must be less than payable amount", "Warning!");
         }
         if ($scope.payable != 0 && ($scope.shippingAmount >= $scope.payable)) {
             $scope.shippingAmount = 0;
@@ -366,8 +363,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            //window.toastr.error("Shipping amount must be less than payable amount", "Warning!");
-            window.toastr.error("El importe del envío debe ser menor que la cantidad a pagar", "Aviso!");
+            window.toastr.error("Shipping amount must be less than payable amount", "Warning!");
         }
         if ($scope.discountType == 'percentage') {
             discountPercentage =  parseFloat($scope._percentage($scope.payable, $scope.discountAmount));
@@ -455,7 +451,7 @@ function (
                                 if (window.store.sound_effect == 1) {
                                     window.storeApp.playSound("error.mp3");
                                 }
-                                window.toastr.error("Este producto está agotado!", "Aviso!");
+                                window.toastr.error("This product is out of stock!", "Warning!");
                                 return false;
                             }
                             if (window.store.sound_effect == 1) {
@@ -480,7 +476,7 @@ function (
                         if (window.store.sound_effect == 1) {
                             window.storeApp.playSound("error.mp3");
                         }
-                        window.toastr.error("Este producto está agotado!", "Aviso!");
+                        window.toastr.error("This product is out of stock!", "Warning!");
                         return false;
                     }
                     if (window.store.sound_effect == 1) {
@@ -540,14 +536,14 @@ function (
             $scope.showLoader = !1;
 
             window.onbeforeunload = function() {
-              return "Data will be lost if you leave the page, Está seguro?";
+              return "Data will be lost if you leave the page, are you sure?";
             };
             
         }, function(response) {
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error(response.data.errorMsg, "Aviso!");
+            window.toastr.error(response.data.errorMsg, "Warning!");
             $scope.showLoader = !1;
         });
     };
@@ -586,8 +582,7 @@ function (
                             if (window.store.sound_effect == 1) {
                                 window.storeApp.playSound("error.mp3");
                             }
-                            //window.toastr.error("Quantity can't be less than 1", "Warning!");
-                            window.toastr.error("Cantidad no puede ser menor que 1", "Aviso!");
+                            window.toastr.error("Quantity can't be less than 1", "Warning!");
                         }
                     }
                 });
@@ -615,7 +610,7 @@ function (
                 if (window.store.sound_effect  == 1) {
                     window.storeApp.playSound("error.mp3");
                 }
-                window.toastr.error("El último elemento no se puede eliminar!", "Aviso!");
+                window.toastr.error("Last item can not be removed!", "Warning!");
                 return false;
             }
         }
@@ -711,7 +706,7 @@ function (
                 if (window.store.sound_effect == 1) {
                     window.storeApp.playSound("error.mp3");
                 }
-                window.toastr.warning(response.data.errorMsg, "Aviso!");
+                window.toastr.warning(response.data.errorMsg, "Warning!");
                 window.location = window.baseUrl + '/admin/pos.php';
             });
         }
@@ -802,7 +797,7 @@ function (
                 if (window.store.sound_effect == 1) {
                     window.storeApp.playSound("error.mp3");
                 }
-                window.toastr.warning(response.data.errorMsg, "Aviso!");
+                window.toastr.warning(response.data.errorMsg, "Warning!");
                 window.location = window.baseUrl + '/admin/pos.php';
             });
         }
@@ -977,7 +972,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error("Por favor, seleccione al menos un producto.", "Aviso!");
+            window.toastr.error("Please, select at least one product item", "Warning!");
             return false;
         }
         if (window.store.remote_printing != 1) {
@@ -992,7 +987,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error("Por favor, seleccione al menos un producto.", "Aviso!");
+            window.toastr.error("Please, select at least one product item", "Warning!");
             return false;
         }
         if (window.store.remote_printing != 1) {
@@ -1017,14 +1012,14 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error("Por favor, seleccione al menos un producto.", "Aviso!");
+            window.toastr.error("Please, select at least one product item", "Warning!");
             return false;
         }
         if (!$scope.customerName) {
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error("Por favor, seleccione un cliente", "Aviso!");
+            window.toastr.error("Please, select a customer", "Warning!");
             return false;
         } 
         $scope.customerId = $(document).find("input[name=\"customer-id\"]").val();
@@ -1097,7 +1092,7 @@ function (
                                 if (window.store.sound_effect == 1) {
                                     window.storeApp.playSound("error.mp3");
                                 }
-                                window.toastr.error("Este producto esta agotado!", "Aviso!");
+                                window.toastr.error("This product is out of stock!", "Warning!");
                             }
                         } else {
                             $scope.error = true;
@@ -1108,7 +1103,7 @@ function (
                     if (window.store.sound_effect == 1) {
                         window.storeApp.playSound("error.mp3");
                     }
-                    window.toastr.error(response.data.errorMsg, "Aviso!");
+                    window.toastr.error(response.data.errorMsg, "Warning!");
                 });
             });
         }
@@ -1189,7 +1184,7 @@ function (
             if (window.store.sound_effect == 1) {
                 window.storeApp.playSound("error.mp3");
             }
-            window.toastr.error("Por favor, seleccione al menos un producto.", "Aviso!");
+            window.toastr.error("Please, select at least one product item", "Warning!");
             return false;
         }
         if ($("#customer-mobile-number").val()) {
@@ -1218,8 +1213,7 @@ function (
                 if (window.store.sound_effect == 1) {
                     window.storeApp.playSound("error.mp3");
                 }
-                //window.toastr.error("Quantity must be greater than 0!", "Warning!");
-                window.toastr.error("Cantidad debe ser mayor que 0!", "Aviso!");
+                window.toastr.error("Quantity must be greater than 0!", "Warning!");
                 return false;
             }
             $scope.addItemToInvoice($scope.productItemId, parseFloat(itemQuantity));

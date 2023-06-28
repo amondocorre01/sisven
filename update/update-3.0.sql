@@ -2267,7 +2267,7 @@ INSERT INTO `language_translations` (`id`, `lang_id`, `lang_key`, `key_type`, `l
 (1291, 1, 'title_checkout', 'specific', 'Checkout'),
 (1292, 1, 'label_credit_balance', 'specific', 'Credit Balance'),
 (1293, 1, 'label_giftcard_taken', 'specific', 'Gift Card taken'),
-(1294, 1, 'text_are_you_sure', 'specific', 'Está seguro?'),
+(1294, 1, 'text_are_you_sure', 'specific', 'Are you sure?'),
 (1295, 1, 'text_information', 'specific', 'Information'),
 (1296, 1, 'text_store_access_success', 'specific', 'Store  successfully activated'),
 (1297, 1, 'title_cart_empty', 'specific', 'Cart is empty'),

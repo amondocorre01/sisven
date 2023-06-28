@@ -446,14 +446,12 @@ if ($order_printer_ids) {
 												<?php echo trans('button_pay'); ?>
 											</button>
 										</div>
-										<!--
 										<div class="btn-group">
 											<button ng-click="HoldingOrderModal()" on-click="return false;" class="btn btn-danger" data-loading-text="Processing..." title="Order Holdinbg">
 												<span class="fa fa-fw fa-crosshairs"></span> 
 												<?php echo trans('button_hold'); ?>
 											</button>
 										</div>
-										-->
 									</div>
 								</div>
 								<!-- Action Button Section End-->

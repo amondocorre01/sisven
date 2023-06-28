@@ -262,8 +262,8 @@ function (
 
         // Alert
         window.swal({
-          title: "Eliminar!",
-          text: "Está seguro?",
+          title: "Delete!",
+          text: "Are you sure?",
           icon: "warning",
           buttons: true,
           dangerMode: false,
@@ -278,11 +278,9 @@ function (
                 })
                 .then(function (response) {
                     $(dt).DataTable().ajax.reload( null, false );
-                    //window.swal("success!", "Currency successfully deleted!", "success");
-                    window.swal("success!", "Moneda eliminada exitosamente!", "success");
+                    window.swal("success!", "Currency successfully deleted!", "success");
                 }, function (response) {
-                    //window.swal("Oops!", "unable to Eliminar!", "error");
-                    window.swal("Oops!", "No se ha logrado eliminar!", "error");
+                    window.swal("Oops!", "unable to delete!", "error");
                 });
             }
         });

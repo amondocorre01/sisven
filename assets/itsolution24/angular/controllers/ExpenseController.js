@@ -333,8 +333,8 @@ function (
         e.preventDefault();
         var d = dt.DataTable().row( $(this).closest("tr") ).data();
         window.swal({
-          title: "Eliminar!",
-          text: "Está seguro?",
+          title: "Delete!",
+          text: "Are you sure?",
           icon: "warning",
           buttons: true,
           dangerMode: false,
@@ -349,10 +349,9 @@ function (
                 })
                 .then(function (response) {
                     $(dt).DataTable().ajax.reload( null, false );
-                    //window.swal("success!", "Expense successfully deleted!", "success");
-                    window.swal("success!", "Gasto eliminado exitosamente!", "success");
+                    window.swal("success!", "Expense successfully deleted!", "success");
                 }, function (response) {
-                    window.swal("Oops!", "No se ha logrado eliminar!", "error");
+                    window.swal("Oops!", "unable to delete!", "error");
                 });
             }
         });

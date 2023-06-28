@@ -489,7 +489,7 @@ function (
 
         // Alert
         window.swal({
-          title: "Está seguro?",
+          title: "Are You Sure?",
           text: "Delete All Selected Products!",
           icon: "warning",
           buttons: {

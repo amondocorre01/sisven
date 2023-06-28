@@ -77,8 +77,8 @@ window.angularApp.factory("HoldingOrderDetailsModal", ["API_URL", "window", "jQu
 
                 $scope.deleteHoldingOrder = function(refNo) {
                     window.swal({
-                    title: "Eliminar!",
-                    text: "Está seguro?",
+                    title: "Delete!",
+                    text: "Are you sure?",
                     icon: "warning",
                     buttons: true,
                     dangerMode: false,

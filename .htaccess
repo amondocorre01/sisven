@@ -15,7 +15,7 @@ AddType application/x-font-ttf .ttf
 # php_value max_input_time 200
 
 # 7. set max time for execution
-#php_value max_execution_time 600
+php_value max_execution_time 600
 
 # 8. disable open_basedir limitations
 # php_admin_value open_basedir none

@@ -500,7 +500,7 @@
           </ul>
         </li>
       <?php endif; ?>
-      <!--
+
       <?php if (user_group_id() == 1 || has_permission('access', 'deposit') || has_permission('access', 'withdraw') || has_permission('access', 'transfer') || has_permission('access', 'read_bank_transfer') || has_permission('access', 'read_bank_transactions') || has_permission('access', 'read_bank_account') || has_permission('access', 'create_bank_account') || has_permission('access', 'read_bank_account_sheet') || has_permission('access', 'read_income_monthwise') || has_permission('access', 'read_expense_monthwise') || has_permission('access', 'read_income_and_expense_report') || has_permission('access', 'read_profit_and_loss_report') || has_permission('access', 'read_cashbook_report')) : ?>
         <li class="treeview<?php echo current_nav() == 'bank_transactions' || current_nav() == 'new_deposit' || current_nav() == 'new_withdraw' || current_nav() == 'bank_transfer' || current_nav() == 'bank_transactions' || current_nav() == 'bank_account' || current_nav() == 'bank_account_sheet' || current_nav() == 'income_source' || current_nav() == 'income_monthwise' || (current_nav() == 'expense_monthwise' && isset($request->get['show_top'])) || current_nav() == 'report_income_and_expense' || current_nav() == 'report_cashbook' || current_nav() == 'report_profit_and_loss' ? ' active' : null; ?>">
           <a href="bank_transactions.php?type=report">
@@ -625,8 +625,8 @@
             <?php endif; ?>
           </ul>
         </li>
-      <?php endif;?>
-      -->
+      <?php endif; ?>
+
       <?php if (user_group_id() == 1 || has_permission('access', 'read_expense') || has_permission('access', 'create_expense') || has_permission('access', 'read_expense_category') || has_permission('access', 'read_expense_summary') || has_permission('access', 'read_expense_monthwise')) : ?>
         <li class="treeview<?php echo current_nav() == 'expense' || current_nav() == 'expense_category' || current_nav() == 'expense_summary' || (current_nav() == 'expense_monthwise' && !isset($request->get['show_top'])) ? ' active' : null; ?>">
           <a href="expense.php">
@@ -688,7 +688,7 @@
           </ul>
         </li>
       <?php endif; ?>
-              <!--
+
       <?php if (user_group_id() == 1 || has_permission('access', 'read_loan') || has_permission('access', 'take_loan') || has_permission('access', 'read_loan_summary')) : ?>
         <li class="treeview<?php echo current_nav() == 'loan' || current_nav() == 'loan_summary' ? ' active' : null; ?>">
           <a href="loan.php">
@@ -726,7 +726,7 @@
           </ul>
         </li>
       <?php endif; ?>
-            -->
+
       <li class="treeview<?php echo current_nav() == 'report_overview' || current_nav() == 'report_collection' || current_nav() == 'report_customer_due_collection' || current_nav() == 'report_supplier_due_paid' || current_nav() == 'report_sell_itemwise' || current_nav() == 'report_sell_categorywise' || current_nav() == 'report_sell_supplierwise' || current_nav() == 'report_purchase_itemwise' || current_nav() == 'report_purchase_categorywise' || current_nav() == 'report_purchase_supplierwise' || current_nav() == 'report_sell_payment' || current_nav() == 'report_purchase_payment' || current_nav() == 'report_sell_tax' || current_nav() == 'report_purchase_tax' || current_nav() == 'report_tax_overview' || current_nav() == 'report_stock'  ? ' active' : null; ?>">
         <?php if(user_group_id() == 1 || has_permission('access', 'read_overview_report') || has_permission('access', 'read_collection_report') || has_permission('access', 'read_customer_due_collection_report') || has_permission('access', 'read_supplier_due_paid_report') || has_permission('access', 'read_sell_report') || has_permission('access', 'read_purchase_report') || has_permission('access', 'read_sell_payment_report') || has_permission('access', 'read_purchase_payment_report') || has_permission('access', 'read_sell_tax_report') || has_permission('access', 'read_purchase_tax_report') || has_permission('access', 'read_tax_overview_report') || has_permission('access', 'read_stock_report')): ?>
         <a href="report_overview.php">
@@ -861,7 +861,7 @@
             <?php endif; ?>
         </ul>
       </li>
-            <!--
+
       <?php if (user_group_id() == 1 || has_permission('access', 'read_analytics')) : ?>
         <li class="<?php echo current_nav() == 'analytics' ? 'active' : null; ?>">
           <a href="analytics.php">
@@ -872,8 +872,7 @@
           </a>
         </li>
       <?php endif; ?>
-      -->
-        <!--
+
       <?php if (user_group_id() == 1 || has_permission('access', 'send_sms') || has_permission('access', 'read_sms_setting') || has_permission('access', 'read_sms_report')) : ?>
         <li class="treeview<?php echo current_nav() == 'sms_send' || current_nav() == 'sms_setting' || current_nav() == 'sms_report' ? ' active' : null; ?>">
           <a href="sms_send.php">
@@ -919,7 +918,7 @@
           </ul>
         </li>
       <?php endif; ?>
-            -->
+
       <?php if (user_group_id() == 1 || has_permission('access', 'read_user') || has_permission('access', 'read_usergroup') || has_permission('access', 'change_password')) : ?>
         <li class="treeview<?php echo current_nav() == 'user' || current_nav() == 'user_group' || current_nav() == 'password' ? ' active' : null; ?>">
           <a href="user.php">

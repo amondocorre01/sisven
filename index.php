@@ -1,5 +1,17 @@
 <?php 
-
+/*
+| -----------------------------------------------------
+| PRODUCT NAME: 	Modern POS - Point of Sale with Stock Management System
+| -----------------------------------------------------
+| AUTHOR:     ITSOLUTION24.COM
+| -----------------------------------------------------
+| EMAIL:      info@itsolution24.com
+| -----------------------------------------------------
+| COPYRIGHT:    RESERVED BY ITSOLUTION24.COM
+| -----------------------------------------------------
+| WEBSITE:      http://itsolution24.com
+| -----------------------------------------------------
+*/
 include("_init.php");
 $document->setTitle(trans('text_login_title'));
 
@@ -287,7 +299,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
             <div class="input-group-addon input-sm">
               <svg class="svg-icon"><use href="#icon-avatar"></svg>
             </div>
-            <input type="text" class="form-control" value="admin@gmail.com" placeholder="Email / Phone No." name="username">
+            <input type="text" class="form-control" value="tusolutionweb@gmail.com" placeholder="Email / Phone No." name="username">
           </div>
         </div>
 
@@ -296,7 +308,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
             <div class="input-group-addon input-sm">
               <svg class="svg-icon"><use href="#icon-password"></svg>
             </div>
-            <input type="password" class="form-control" value="admin123" placeholder="Password" name="password">
+            <input type="password" class="form-control" value="tusolutionweb" placeholder="Password" name="password">
           </div>
         </div>
 
@@ -334,7 +346,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
       <?php endif; ?>
     </div>
     <div class="copyright text-center">
-      
+      <p>&copy; <a href="https://www.udemy.com/user/tayler-darden/">Mas proyectos aqui</a>, </p>
     </div>
   </section>
 
@@ -367,6 +379,6 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
     <!-- Forgot Password Modal End -->
   <?php endif; ?>
 
-<noscript>You need to have javascript enabled in order to use.. <strong><?php echo store('name');?></strong>.</noscript>
+<noscript>You need to have javascript enabled in order to use <strong><?php echo store('name');?></strong>.</noscript>
 </body>
 </html>

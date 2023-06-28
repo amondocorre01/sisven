@@ -63,7 +63,7 @@ QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
 				<td style="width:50%;vertical-align:top;">
 					<h6 style="font-style:italic;font-weight:bold;"><?php echo trans('label_to');?>:</h6>
 					<h4 style="font-weight:bold;"><?php echo $customer_name;?></h4>
-				    <address class="mb-0">
+					<!-- <address class="mb-0">
 						<h4 style="font-weight:bold;"><?php echo $customer_name;?></h4>
 						<p><?php echo nl2br(get_the_customer($order['customer_id'],'customer_address'));?></p>
 						<span><?php echo trans('label_mobile');?>: <?php echo get_the_customer($order['customer_id'],'customer_mobile');?></span><br>
@@ -71,7 +71,7 @@ QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
 						<div class="qrcode">
 						  <img src="<?php echo root_url();?>/storage/qrcode.png">
 						</div>
-					</address> 
+					</address> -->
 					<p><b><?php echo trans('label_shipping_and_billing_address');?>:</b></p>
 					<address class="mb-10">
 						<?php $address = json_decode($order['address']);?>
@@ -93,7 +93,7 @@ QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
 		</tbody>
 	</table>
 
-	 <table class="table table-bordered table-condensed">
+	<!-- <table class="table table-bordered table-condensed">
 		<tbody>
 			<tr>
 				<td style="width:50%;vertical-align:top;">
@@ -116,7 +116,7 @@ QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
 				</td>
 			</tr>
 		</tbody>
-	</table> 
+	</table> -->
 
 	<div class="xrow">
 		<div class="xcol-md-12">

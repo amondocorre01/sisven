@@ -20,7 +20,7 @@ window.angularApp.factory("keyboardShortcutModal", ["API_URL", "window", "jQuery
                     $scope.modal_title = "Keyboard Shortcut";
                     $scope.rawHtml = $sce.trustAsHtml(response.data);
                 }, function(data) {
-                   window.swal("Oops!", "Un error desconocido ha ocurrido!", "error");
+                   window.swal("Oops!", "an unknown error occured!", "error");
                 });
                 $scope.cancel = function () {
                     $uibModalInstance.dismiss("cancel");

@@ -73,7 +73,7 @@ function (
         var customerID = $('#customer_id').val();
         var customerName = $("#customer_id").select2('data')[0].text;
         if (!customerID) {
-            swal("aviso", "Por favor, seleccione un cliente!");
+            swal("warning", "Please, Select a customer!");
             return false;
         }
         CustomerEditModal({'customer_name':customerName,'customer_id':customerID});
@@ -86,7 +86,7 @@ function (
         e.preventDefault();
         var customerID = $('#customer_id').val();
         if (!customerID) {
-            swal("aviso", "Por favor, seleccione un cliente!");
+            swal("warning", "Please, Select a customer!");
             return false;
         }
         window.open(window.baseUrl + "/admin/customer_profile.php?customer_id=" + customerID);

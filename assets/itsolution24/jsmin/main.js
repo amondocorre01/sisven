@@ -3009,8 +3009,8 @@ window.jQuery(window).on("load", function () {
 	$("#logout").on("click", function(e) {
 		e.preventDefault();
 		window.swal({
-          title: "Cerrar sesión!",
-          text: "Quieres cerrar la sesión?",
+          title: "Logout!",
+          text: "Do you want to logout?",
           icon: "warning",
           buttons: true,
           dangerMode: false,
@@ -7163,7 +7163,7 @@ window.angularApp.factory("SupportDeskModal", ["API_URL", "$http", "$uibModal", 
                 .then(function(response, status, headers, config) {
                     $scope.rawHtml = $sce.trustAsHtml(response.data);
                 }, function(data) {
-                   window.swal("Oops!", "Un error desconocido ha ocurrido!", "error");
+                   window.swal("Oops!", "an unknown error occured!", "error");
                 });
                 $scope.cancel = function () {
                     $uibModalInstance.dismiss("cancel");
@@ -8069,7 +8069,7 @@ window.angularApp.factory("keyboardShortcutModal", ["API_URL", "window", "jQuery
                     $scope.modal_title = "Keyboard Shortcut";
                     $scope.rawHtml = $sce.trustAsHtml(response.data);
                 }, function(data) {
-                   window.swal("Oops!", "Un error desconocido ha ocurrido!", "error");
+                   window.swal("Oops!", "an unknown error occured!", "error");
                 });
                 $scope.cancel = function () {
                     $uibModalInstance.dismiss("cancel");

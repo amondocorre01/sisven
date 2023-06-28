@@ -380,8 +380,8 @@ function (
         var $tag = $(this);
         var $btn = $tag.button("loading");
         window.swal({
-          title: "Eliminar!",
-          text: "Está seguro?",
+          title: "Delete!",
+          text: "Are You Sure?",
           icon: "warning",
           buttons: {
 			cancel: true,

@@ -112,6 +112,7 @@ $demo_text = 'This is a demo version. Data will be reset in every 6 hours interv
 
         <!-- Datatables CSS -->
         <link type="text/css" href="../assets/DataTables/datatables.min.css" type="text/css" rel="stylesheet">
+
         <!-- Main CSS -->
         <link href="../assets/itsolution24/css/main.css" type="text/css" rel="stylesheet">
 
@@ -124,9 +125,6 @@ $demo_text = 'This is a demo version. Data will be reset in every 6 hours interv
 
         <!-- Print CSS -->
         <link href="../assets/itsolution24/css/print.css" media="print" type="text/css" rel="stylesheet">
-
-        <!--My Styles-->
-        <link href="../assets/mystyles.css" media="print" type="text/css" rel="stylesheet">
 
     <?php endif; ?>
 
