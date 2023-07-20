@@ -129,6 +129,23 @@
         </ul>
       </li>
 
+      <li class="treeview">
+        <a href="#">
+        <svg class="svg-icon"><use href="#icon-money"></svg>
+        <span>COBROS</span>
+        <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="">
+            <a href="cobros.php" title="Cobros">
+              <svg class="svg-icon"><use href="#icon-invoice-list"></svg> 
+              <span>Cobros</span>
+            </a>
+          </li>
+          <li></li>
+        </ul>
+      </li>
+
       <?php if (user_group_id() == 1 || has_permission('access', 'read_quotation')) : ?>
         <li class="treeview<?php echo current_nav() == 'quotation' || current_nav() == 'quotation_list' ||  current_nav() == 'quotation_edit' ? ' active' : null; ?>">
           <?php if(user_group_id() == 1 || has_permission('access', 'read_quotation') || has_permission('access', 'create_quotation')): ?>
