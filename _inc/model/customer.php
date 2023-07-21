@@ -53,8 +53,8 @@ class ModelCustomer extends Model
 	{
 		$gtin = isset($data['gtin']) ? $data['gtin'] : '';
 		$customer_state = isset($data['customer_state']) ? $data['customer_state'] : '';
-    	$statement = $this->db->prepare("UPDATE `customers` SET `customer_name` = ?, `dob` = ?, `customer_email` = ?, `customer_mobile` = ?, `customer_sex` = ?, `customer_age` = ?, `gtin` = ?, `customer_address` = ?, `customer_city` = ?, `customer_state` = ?, `customer_country` = ? WHERE `customer_id` = ? ");
-    	$statement->execute(array($data['customer_name'], date('Y-m-d',strtotime($data['dob'])), $data['customer_email'], $data['customer_mobile'], $data['customer_sex'], $data['customer_age'], $gtin, $data['customer_address'], $data['customer_city'], $customer_state, $data['customer_country'], $customer_id));
+    	$statement = $this->db->prepare("UPDATE `customers` SET `customer_name` = ?, `dob` = ?, `customer_email` = ?, `customer_mobile` = ?, `customer_sex` = ?, `customer_age` = ?, `gtin` = ?, `customer_address` = ?, `customer_city` = ?, `customer_state` = ?, `customer_country` = ? , `customer_business`= ?, `tipo_cliente` = ?, `celular_2` = ?, `ubicacion_gps`= ? WHERE `customer_id` = ? ");
+    	$statement->execute(array($data['customer_name'], date('Y-m-d',strtotime($data['dob'])), $data['customer_email'], $data['customer_mobile'], $data['customer_sex'], $data['customer_age'], $gtin, $data['customer_address'], $data['customer_city'], $customer_state, $data['customer_country'],$data['customer_business'],$data['tipo_cliente'],$data['celular_2'],$data['ubicacion_gps'] ,$customer_id));
 
     	// Insert customer into store
     	if (isset($data['customer_store'])) {

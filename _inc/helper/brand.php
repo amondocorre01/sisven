@@ -13,6 +13,13 @@ function get_brands($data = array())
 	return $model->getBrands($data);
 }
 
+function get_precios() 
+{
+	$model = registry()->get('loader')->model('product');
+	return $model->getPrecios();
+}
+
+
 function get_the_brand($id, $field = null) 
 {
 	

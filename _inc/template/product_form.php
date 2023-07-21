@@ -184,7 +184,7 @@
 
           <div ng-hide="hideBrand" class="form-group">
             <label for="brand_id" class="col-sm-3 control-label">
-              <?php echo trans('label_brand'); ?>
+              PROCEDENCIA
             </label>
             <div class="col-sm-8">
               <select class="form-control" name="brand_id" required>
@@ -206,6 +206,20 @@
                   }
                 ?>
               </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="p_name" class="col-sm-3 control-label">MEDIDA</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="medida" id="medida" value="<?php echo $product['medida']; ?>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="p_name" class="col-sm-3 control-label">UNIDAD POR CAJA</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="unidad_caja" id="unidad_caja" value="<?php echo $product['unidad_caja']; ?>">
             </div>
           </div>
 
@@ -268,16 +282,30 @@
               <input type="text" step="0.01" value="0" class="form-control" id="sell_price" value="<?php echo $product['sell_price']; ?>" name="sell_price" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" onKeyUp="if(this.value<0){this.value='1';}" required>
             </div>
           </div>
-
+          
           <div class="form-group">
             <label for="sell_category_price" class="col-sm-3 control-label">
               <?php echo trans('label_product_price'); ?><i class="required">*</i>
             </label>
-            <div class="col-sm-7">
-              <select name="sell_category_price" id="sell_category_price">
-                <option value="">Seleccione categoria</option>
-                <option value="1">Categoria 1</option>
-                <option value="2">Categoria 2</option>
+            <div class="col-sm-8">
+              <select class="form-control" name="sell_category_price" required>
+                <option value="">
+                  <?php echo trans('text_select'); ?>
+                </option>
+                <?php foreach(get_precios() as $lista) {
+                    if($lista['id'] == $product['category_price']) { ?>
+                      <option value="<?php echo $lista['id']; ?>" selected>
+                        <?php echo $lista['descripcion']; ?>
+                      </option>
+                    <?php
+                    } else { ?>
+                      <option value="<?php echo $lista['id']; ?>">
+                        <?php echo $lista['descripcion']; ?>
+                      </option>
+                    <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
