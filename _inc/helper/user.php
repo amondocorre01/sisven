@@ -123,3 +123,11 @@ function has_permission($type, $param)
 	global $user;
 	return $user->hasPermission($type, $param);
 }
+
+function protocoloWeb(){
+	$protocol =  "http://";
+	if (isset($_SERVER['HTTPS']) && in_array($_SERVER['HTTPS'], ['on', 1]) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+		$protocol = 'https://';
+	}
+	return $protocol ;
+}

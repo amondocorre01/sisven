@@ -3,6 +3,11 @@ ob_start();
 session_start();
 include '../_init.php';
 
+$protocolo = protocoloWeb();
+$host= $_SERVER["HTTP_HOST"];
+$url= '';//$_SERVER["REQUEST_URI"];
+$current_url = $protocolo.$host.$url;
+
 // Redirect, If user is not logged in
 if (!is_loggedin()) {
   redirect(root_url() . '/index.php?redirect_to=' . url());
@@ -325,7 +330,9 @@ function confirmDelete(e){
         })
         .then(function (willDelete) {
             if (willDelete) {
-				let url = 'http://localhost/sisven' + "/_inc/cobros.php";
+
+				//let url = 'http://localhost/sisven' + "/_inc/cobros.php";
+				var url = `<?=$current_url?>/sisven//_inc/cobros.php`;
 				console.log('url',url);
 				//let datos = {id_cobro:iden, action_type:'DELETE'};
 

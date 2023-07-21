@@ -2,6 +2,10 @@
 ob_start();
 session_start();
 include '../_init.php';
+$protocolo = protocoloWeb();
+$host= $_SERVER["HTTP_HOST"];
+$url= '';//$_SERVER["REQUEST_URI"];
+$current_url = $protocolo.$host.$url;
 
 // Redirect, If user is not logged in
 if (!is_loggedin()) {
@@ -306,7 +310,9 @@ $(document).ready(function() {
 function loadDataSelectPrices(){
 	$('#prices_selected').html('');
 	$('#prices_selected').hide();
-	let enlace = 'http://localhost/sisven' + "/_inc/product.php";
+	var enlace = `<?=$current_url?>/sisven//_inc/product.php`;
+	//let enlace = 'http://localhost/sisven' + "/_inc/product.php";
+	//let enlace = 'http://localhost/sisven' + "/_inc/product.php";
     var datos = new FormData();
 	datos.append("get-precios",'1');
     $.ajax({
