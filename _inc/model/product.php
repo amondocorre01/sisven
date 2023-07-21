@@ -77,6 +77,7 @@ class ModelProduct extends Model
 
 				$statement = $this->db->prepare("INSERT INTO `product_to_store` SET `product_id` = ?, `store_id` = ?, `purchase_price` = ?, `sell_price` = ?, `sup_id` = ?, `brand_id` = ?, `box_id` = ?, `taxrate_id` = ?, `tax_method` = ?, `preference` = ?, `e_date` = ?, `alert_quantity` = ?, `p_date` = ?");
 				var_dump($data['purchase_price']);
+				
 				$statement->execute(array($product_id, $store_id, $data['purchase_price'], $data['sell_price'], $data['sup_id'], $data['brand_id'], $data['box_id'], $data['taxrate_id'], $data['tax_method'], $preference, $data['e_date'], $data['alert_quantity'], date('Y-m-d')));
 				
 			}
