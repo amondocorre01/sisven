@@ -258,14 +258,15 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
     $id_cobro = $request->post['id_cobro'];
 
     // validte delete action
-    $cobros_model->updateStatus($id_cobro, 0);
+    $changed = $cobros_model->updateStatus($id_cobro, 0);
     $action_type = $request->post['action_type'];
-
-    $message = 'Eliminado correctamente.';
+    if($changed){
+      $message = 'Eliminado correctamente.';
     //$Hooks->do_action('After_Delete_Product', $product);
-    header('Content-Type: application/json');
-    echo json_encode(array('msg' => $message, 'id' => $id_cobro, 'action_type' => $action_type));
-
+      header('Content-Type: application/json');
+      echo json_encode(array('msg' => $message, 'id' => $id_cobro, 'action_type' => $action_type));
+    }
+    
     exit();
     if (empty($request->post['delete_action'])) {
       throw new Exception(trans('error_delete_action'));

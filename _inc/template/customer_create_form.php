@@ -12,6 +12,29 @@
     </div>
 
     <div class="form-group">
+      <label for="customer_business" class="col-sm-3 control-label">EMPRESA</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" name="customer_business" id="customer_business">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tipo_cliente" class="col-sm-3 control-label">
+        TIPO DE CLIENTE
+      </label>
+      <div class="col-sm-7">
+        <select id="tipo_cliente" class="form-control select2" name="tipo_cliente" required>
+        <option value="" selected>SELECCIONE UNA OPCION</option>
+          <option value="COMERCIAL">COMERCIAL</option>
+          <option value="CONSTRUCTORA">CONSTRUCTORA</option>
+          <option value="ARQUITECTO" >ARQUITECTO</option>
+          <option value="CLIENTE FINAL">CLIENTE FINAL</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="form-group">
       <label for="credit_balance" class="col-sm-3 control-label">
         <?php echo sprintf(trans('label_credit_balance'), null); ?>
       </label>
@@ -26,6 +49,13 @@
       </label>
       <div class="col-sm-7">
         <input type="text" class="form-control" id="customer_mobile" value="<?php echo isset($request->post['customer_mobile']) ? $request->post['customer_mobile'] : null; ?>" name="customer_mobile">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="celular_2" class="col-sm-3 control-label">CELULAR 2</label>
+      <div class="col-sm-7">
+        <input type="number" class="form-control" name="celular_2" id="celular_2">
       </div>
     </div>
 
@@ -96,6 +126,13 @@
     </div>
 
     <div class="form-group">
+      <label for="ubicacion_gps" class="col-sm-3 control-label">UBICACION GPS</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" name="ubicacion_gps" id="ubicacion_gps">
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="customer_city" class="col-sm-3 control-label">
         <?php echo sprintf(trans('label_city'), null); ?>
       </label>
@@ -114,7 +151,7 @@
       </div>
     </div>
     <?php else : ?>
-      <div class="form-group">
+      <div class="form-group hidden">
         <label for="customer_state" class="col-sm-3 control-label">
           <?php echo sprintf(trans('label_state'), null); ?>
         </label>

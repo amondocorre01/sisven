@@ -299,7 +299,69 @@ include ("left_sidebar.php");
 <script type="text/javascript">
 $(document).ready(function() {
 	storeApp.intiTinymce();
+	var prices = [];
+	loadDataSelectPrices();
 });
+
+function loadDataSelectPrices(){
+	$('#prices_selected').html('');
+	$('#prices_selected').hide();
+	let enlace = 'http://localhost/sisven' + "/_inc/product.php";
+    var datos = new FormData();
+	datos.append("get-precios",'1');
+    $.ajax({
+		method:'POST',
+		url: enlace,
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType : "json",
+		success:function(response){
+			response.forEach(element => {
+				$('#sell_category_price').append(new Option(element.descripcion, element.id));
+			});
+			prices = response;
+		},
+		error:function(){
+			console.log('Sucedio un error.');
+		}
+    });  
+}
+
+$('#sell_category_price').change(function() {
+	console.log('this is a prices', prices);
+	let valor = $(this).val();
+	let prices_item = prices.filter(item => item.id == valor);
+
+	if(prices_item.length > 0){
+		prices_item = prices_item[0];
+		let th = (prices_item.precio_a)?'<th>PRECIO 1</th>':'';
+		th += prices_item.precio_b?'<th>PRECIO 2</th>':'';
+		th += prices_item.precio_c?'<th>PRECIO 3</th>':'';
+		th += prices_item.precio_d?'<th>PRECIO 4</th>':'';
+		th += prices_item.precio_e?'<th>PRECIO 5</th>':'';
+
+		let td = prices_item.precio_a?`<td>${prices_item.precio_a}</td>`:'';
+		td += prices_item.precio_b?`<td>${prices_item.precio_b}</td>`:'';
+		td += prices_item.precio_c?`<td>${prices_item.precio_c}</td>`:'';
+		td += prices_item.precio_d?`<td>${prices_item.precio_d}</td>`:'';
+		td += prices_item.precio_e?`<td>${prices_item.precio_e}</td>`:'';
+		
+		let table = `<table class="table table-bordered table-striped table-hover">
+					<thead><tr class="bg-gray">${th}</tr></thead> 
+					<tbody><tr>${td}</tr></tbody>
+					</table>`;
+
+		$('#prices_selected').html(table);
+		$('#prices_selected').show();
+	}else{
+		$('#prices_selected').html('');
+		$('#prices_selected').hide();
+	}
+	
+});
+
 </script>
 
 <?php include ("footer.php"); ?>

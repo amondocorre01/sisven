@@ -24,6 +24,13 @@ if (user_group_id() != 1 && !has_permission('access', 'read_product')) {
 // LOAD PRODUCT MODEL
 $product_model = registry()->get('loader')->model('product');
 
+//api select precios
+if(isset($request->post['get-precios'])){
+  $result = $product_model->getPrecios();
+  echo json_encode($result);
+  exit();
+}
+
 // Validate post data
 function validate_request_data($request) 
 {

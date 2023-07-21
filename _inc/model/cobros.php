@@ -109,8 +109,7 @@ class ModelCobros extends Model
 		$store_id = $store_id ? $store_id : store_id();
 		//$statement = $this->db->prepare("UPDATE `product_to_store` SET `status` = ? WHERE `store_id` = ? AND `product_id` = ?");
         $statement = $this->db->prepare("UPDATE `cobros` SET `estado` = $status WHERE `store_id` = ? AND `id_cobro` = ?");
-		$statement->execute(array($store_id,$product_id));
-		//$this->db->execute("update cobros set estado = '$status' where store_id = '$store_id' and id_cobro = '$product_id'");
+		$res = $statement->execute(array($store_id,$product_id));
 	}
 
 	public function updateSortOrder($product_id, $sort_order, $store_id = null) 

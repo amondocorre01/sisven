@@ -343,6 +343,9 @@ function confirmDelete(e){
 					success:function(respuesta){
 						window.swal("success!", "Eliminado correctamente!", "success");
 						$("#cobros-list").DataTable().ajax.reload( null, false);
+					},
+					error:function(){
+						window.toastr.error("Sucedio un error!", "Aviso!");
 					}
 				});
             }

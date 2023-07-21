@@ -178,7 +178,7 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
 
           <div ng-hide="hideBrand" class="form-group">
             <label for="brand_id" class="col-sm-3 control-label">
-              <?php echo trans('label_brand'); ?>
+              PROCEDENCIA
             </label>
             <div class="col-sm-7">
               <div class="{{ !hideBrandAddBtn ? 'input-group' : null }}">
@@ -196,6 +196,20 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
                   <i class="fa fa-plus"></i>
                 </a>
               </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="p_name" class="col-sm-3 control-label">MEDIDA</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="medida" id="medida">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="p_name" class="col-sm-3 control-label">UNIDAD POR CAJA</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="unidad_caja" id="unidad_caja">
             </div>
           </div>
 
@@ -307,9 +321,8 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
             <div class="col-sm-7">
               <select name="sell_category_price" id="sell_category_price">
                 <option value="">Seleccione categoria</option>
-                <option value="1">Categoria 1</option>
-                <option value="2">Categoria 2</option>
               </select>
+              <div id="prices_selected"></div>
             </div>
           </div>
 

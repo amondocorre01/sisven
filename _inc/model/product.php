@@ -14,11 +14,18 @@
 */
 class ModelProduct extends Model 
 {
+	public function getPrecios(){
+		$sql = "select * from precios where estado='1';";
+  		$result = $this->db->query($sql);	
+		$result = $result->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
 	public function addProduct($data) 
 	{
 		$hsn_code = isset($data['hsn_code']) ? $data['hsn_code'] : NULL;
-    	$statement = $this->db->prepare("INSERT INTO `products` (p_type, p_name, p_code, hsn_code, barcode_symbology, category_id, unit_id, p_image, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    	$statement->execute(array($data['p_type'], $data['p_name'], $data['p_code'], $hsn_code, $data['barcode_symbology'], $data['category_id'], $data['unit_id'], $data['p_image'], $data['description']));
+    	$statement = $this->db->prepare("INSERT INTO `products` (p_type, p_name, p_code, hsn_code, barcode_symbology, category_id, unit_id, p_image, description, medida, unidad_caja, category_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    	$statement->execute(array($data['p_type'], $data['p_name'], $data['p_code'], $hsn_code, $data['barcode_symbology'], $data['category_id'], $data['unit_id'], $data['p_image'], $data['description'], $data['medida'], $data['unidad_caja'], $data['sell_category_price']));
     	$preference = isset($data['preference']) && !empty($data['preference']) ? serialize($data['preference']) : serialize(array());
 
     	$product_id = $this->db->lastInsertId();
