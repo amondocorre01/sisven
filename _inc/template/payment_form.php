@@ -43,7 +43,7 @@ $customer_id = isset($request->get['customer_id']) ? $request->get['customer_id'
 						</div>
 						<div class="btn-group" role="group">
 							<a ng-hide="isInstallmentOrder" ng-click="checkoutWithFullDue()" onClick="return false;" class="btn btn-danger btn-md full-due">
-								<span class="fa fa-fw fa-minus"></span> <?php echo trans('button_full_due'); ?>
+								<span class="fa fa-fw fa-minus"></span> PAGO A CREDITO
 							</a>
 						</div>
 					</div>
