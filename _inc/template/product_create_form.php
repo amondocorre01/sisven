@@ -467,83 +467,84 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
 <div class="modal fade" id="newPricesCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
+    <form id="create-prices-form" class="form-horizontal" action="product.php?box_state=open" method="post">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">AGREGAR PRECIOS</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      <div class="form-group">
+      
+      <div class="row">
+      
+        <div class="form-group">
           <label for="description_price" class="col-sm-3 control-label">
             Descripción<i class="required">*</i>
           </label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" id="description_price"  name="description_price" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="price_1" class="col-sm-3 control-label">
-            Precio 1
-          </label>
-          <div class="col-sm-7">
-            <input type="number" class="form-control" id="price_1"  name="price_1">
+          <input type="hidden" name="action_type" value="CREATENEWPRICES">
+            <input type="text" class="form-control" id="description_price"  name="description_price" required placeholder="Descripción">
           </div>
         </div>
         
+        <br>
         <div class="form-group">
           <label for="price_1" class="col-sm-3 control-label">
             Precio 1
           </label>
           <div class="col-sm-7">
-            <input type="number" class="form-control" id="price_1"  name="price_1" >
+            <input type="number" class="form-control" id="price_1"  name="price_1" placeholder="Precio">
           </div>
         </div>
-
+        <br>
         <div class="form-group">
           <label for="price_2" class="col-sm-3 control-label">
             Precio 2
           </label>
           <div class="col-sm-7">
-            <input type="number" class="form-control" id="price_2"  name="price_2" >
+            <input type="number" class="form-control" id="price_2"  name="price_2" placeholder="Precio" >
           </div>
         </div>
-
+        <br>
         <div class="form-group">
           <label for="price_3" class="col-sm-3 control-label">
             Precio 3
           </label>
           <div class="col-sm-7">
-            <input type="number" class="form-control" id="price_3"  name="price_3" >
+            <input type="number" class="form-control" id="price_3"  name="price_3" placeholder="Precio" >
           </div>
         </div>
-
+        <br>
         <div class="form-group">
           <label for="price_4" class="col-sm-3 control-label">
             Precio 4
           </label>
           <div class="col-sm-7">
-            <input type="number" class="form-control" id="price_4"  name="price_4" >
+            <input type="number" class="form-control" id="price_4"  name="price_4" placeholder="Precio">
           </div>
         </div>
-
+        <br>
         <div class="form-group">
-          <label for="price_4" class="col-sm-3 control-label">
-            Precio 4
+          <label for="price_5" class="col-sm-3 control-label">
+            Precio 5
           </label>
           <div class="col-sm-7">
-            <input type="number" class="form-control" id="price_4"  name="price_4" >
+            <input type="number" class="form-control" id="price_5"  name="price_5" placeholder="Precio">
           </div>
         </div>
+          <br>
 
+      </div>
+        
 
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="saveNewPrices" ng-click="saveNewPrices()" data-form="#create-prices-form">Guardar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

@@ -31,6 +31,12 @@ if(isset($request->post['get-precios'])){
   exit();
 }
 
+if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action_type']) && $request->post['action_type'] == 'CREATENEWPRICES'){
+  $result = $product_model->saveNewPricesList($request->post);
+  echo json_encode($result);
+  exit();
+}
+
 // Validate post data
 function validate_request_data($request) 
 {

@@ -623,4 +623,41 @@ function (
         var thehtml = dt.html();
         EmailModal({template: "product-list", subject: "Product Listing", title:"Product Listing", html: thehtml});
     });
+
+    $(document).delegate("#saveNewPrices", "click", function(e) {
+        let des = $('#description_price').val();
+        if(!des){
+            alert('ingrese una descripción.');
+            return;
+        }
+        e.preventDefault();
+        var $tag = $(this);
+        //var $btn = $tag.button("loading");
+        var form = $($tag.data("form"));
+        form.find(".alert").remove();
+        var actionUrl = form.attr("action");
+        
+        $http({
+            url: window.baseUrl + "/_inc/" + actionUrl,
+            method: "POST",
+            data: form.serialize(),
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: "json"
+        }).then(function(response) {
+            console.log('guardaddo',response.data);
+            let dato = parseInt((response.data));
+            console.log('dato',dato)
+            if(response.data){
+                console.log('gaurdado');
+                window.swal({
+                    title: "Agregado!",
+                    text: 'Se agrego correctamente.',
+                    icon: "success",
+                  })
+                  $('#newPricesCategory').modal('hide');
+            }
+        });
+    });
 }]);
