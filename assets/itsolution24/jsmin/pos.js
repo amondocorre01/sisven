@@ -11081,6 +11081,7 @@ window.angularApp.factory("PaymentOnlyModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 8');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();
@@ -11363,6 +11364,7 @@ window.angularApp.factory("PurchasePaymentModal", ["API_URL", "window", "jQuery"
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 9');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();

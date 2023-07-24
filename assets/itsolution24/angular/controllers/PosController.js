@@ -1089,6 +1089,7 @@ function (
     // =============================================
 
     $scope.payNow = function() {
+        console.log('pay 1');
         $scope.invoiceNote = $("#invoice-note").data("note");
         if ($scope.itemArray.length <= 0) {
             if (window.store.sound_effect == 1) {

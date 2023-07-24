@@ -319,9 +319,14 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
               <?php echo trans('label_product_price'); ?><i class="required">*</i>
             </label>
             <div class="col-sm-7">
+              <div class="{{ !hideUnitAddBtn ? 'input-group' : null }}">
               <select name="sell_category_price" id="sell_category_price">
                 <option value="">Seleccione categoria</option>
               </select>
+                <a ng-hide="hideUnitAddBtn" class="input-group-addon" onclick="newPricesCategory()">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
               <div id="prices_selected"></div>
             </div>
           </div>
@@ -459,10 +464,99 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
   </div>
 </form>
 
+<div class="modal fade" id="newPricesCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+          <label for="description_price" class="col-sm-3 control-label">
+            Descripción<i class="required">*</i>
+          </label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="description_price"  name="description_price" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price_1" class="col-sm-3 control-label">
+            Precio 1
+          </label>
+          <div class="col-sm-7">
+            <input type="number" class="form-control" id="price_1"  name="price_1">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="price_1" class="col-sm-3 control-label">
+            Precio 1
+          </label>
+          <div class="col-sm-7">
+            <input type="number" class="form-control" id="price_1"  name="price_1" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price_2" class="col-sm-3 control-label">
+            Precio 2
+          </label>
+          <div class="col-sm-7">
+            <input type="number" class="form-control" id="price_2"  name="price_2" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price_3" class="col-sm-3 control-label">
+            Precio 3
+          </label>
+          <div class="col-sm-7">
+            <input type="number" class="form-control" id="price_3"  name="price_3" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price_4" class="col-sm-3 control-label">
+            Precio 4
+          </label>
+          <div class="col-sm-7">
+            <input type="number" class="form-control" id="price_4"  name="price_4" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price_4" class="col-sm-3 control-label">
+            Precio 4
+          </label>
+          <div class="col-sm-7">
+            <input type="number" class="form-control" id="price_4"  name="price_4" >
+          </div>
+        </div>
+
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
   setTimeout(function() {
     $("#random_num").trigger("click");
   }, 1000);
 })
+
+function newPricesCategory(){
+  console.log('abrir modal');
+  $('#newPricesCategory').modal('show');
+}
 </script>

@@ -68,6 +68,7 @@ window.angularApp.factory("PaymentOnlyModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 2');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();

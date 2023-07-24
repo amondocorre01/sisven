@@ -227,7 +227,7 @@
                               <?php elseif ($row['type'] == 'discount') : ?>
                                 <small><i>Discount on</i></small> <?php echo $row['created_at'];?> <small><i>by</i></small> <?php echo get_the_user($row['created_by'], 'username');?>
                               <?php elseif ($row['type'] == 'due_paid') : ?>
-                                <small><i>Duepaid on</i></small> <?php echo $row['created_at'];?> 
+                                <small><i>Pagado el </i></small> <?php echo $row['created_at'];?> 
                                 <?php if ($row['pmethod_id']) : ?>
                                 (via <?php echo get_the_pmethod($row['pmethod_id'], 'name');?>)
                                 <?php endif; ?>

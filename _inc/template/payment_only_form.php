@@ -163,7 +163,7 @@ $customer_id = isset($request->get['customer_id']) ? $request->get['customer_id'
 
 						<!-- Payments start -->
 						<tr ng-repeat="payments in order.payments" class="{{ payments.type=='return' ? 'danger' : 'success' }}">
-							<th ng-show="payments.type=='due_paid'" class="text-right w-60" colspan="2"><small><i>Duepaid on</i></small> {{ payments.created_at }} <small><i>by {{ payments.by }}</i></small></th>
+							<th ng-show="payments.type=='due_paid'" class="text-right w-60" colspan="2"><small><i>Pagado el </i></small> {{ payments.created_at }} <small><i>by {{ payments.by }}</i></small></th>
 							<td ng-show="payments.type=='due_paid'" class="text-right w-40">{{ payments.amount | formatDecimal:2 }}</td>
 
 							<th ng-show="payments.type=='sell'" class="text-right w-60" colspan="2"><small><i>Paid by</i></small> {{ payments.name }} <i>on</i> {{ payments.created_at }} <small><i>by {{ payments.by }}</i></small></th>

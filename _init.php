@@ -1,6 +1,6 @@
 <?php
 /*   __________________________________________________________
-$timezone = 'America/Lima';
+$timezone = 'America/La_Paz';
     |    Web: http:// , E-mail: itsolution24bd@gmail.com   |
     |__________________________________________________________|
 */

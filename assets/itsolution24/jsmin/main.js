@@ -11593,6 +11593,7 @@ window.angularApp.factory("PaymentOnlyModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 6');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();
@@ -11606,6 +11607,12 @@ window.angularApp.factory("PaymentOnlyModal", ["API_URL", "window", "jQuery", "$
                         dataType: "json"
                     }).
                     then(function(response) {
+                        console.log('res',data);
+                        let selector = document.getElementsByName('invoice-id');
+                        let invoice_id = $(selector).val();
+                        
+                        let url_print = window.baseUrl + "/admin/view_invoice.php?invoice_id="+invoice_id;
+                        setTimeout(() => { window.open(url_print,'_blank'); }, 100);
                         window.swal("Success", response.data.msg, "success")
                         .then(function(value) {
                             if ($scope.order.datatable) {
@@ -11875,6 +11882,7 @@ window.angularApp.factory("PurchasePaymentModal", ["API_URL", "window", "jQuery"
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 7');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();

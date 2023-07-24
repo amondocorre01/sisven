@@ -6247,7 +6247,7 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.checkout = function() {
-                    console.log('checkout 2');
+                    console.log('checkout 3');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var actionUrl = form.attr("action");
@@ -6441,6 +6441,7 @@ window.angularApp.factory("PaymentOnlyModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 4');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();
@@ -6723,6 +6724,7 @@ window.angularApp.factory("PurchasePaymentModal", ["API_URL", "window", "jQuery"
                 };
 
                 $scope.payNow = function() {
+                    console.log('pay 5');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var data = form.serialize();
