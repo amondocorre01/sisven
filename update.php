@@ -16,7 +16,7 @@ if (!function_exists("checkInternetConnection")) {
 }
 
 if (!function_exists("checkValidationServerConnection")) {
-    function checkValidationServerConnection($domain = 'www.itsolution24.com')  
+    function checkValidationServerConnection($domain = 'www. ')  
     {
         if($socket =@ fsockopen($domain, 80, $errno, $errstr, 30)) {
             fclose($socket);
@@ -642,7 +642,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST')
                     </form>
                 </div>
             </div>
-            <div class="text-center copyright">&copy; <a href="http://itsolution24.com">ITsolution24.com</a>, All right reserved.</div>
+            <div class="text-center copyright">&copy; <a href="http:// "> </a>, All right reserved.</div>
         </div>
     </div>
 </div>

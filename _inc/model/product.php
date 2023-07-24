@@ -3,19 +3,26 @@
 | -----------------------------------------------------
 | PRODUCT NAME: 	Modern POS
 | -----------------------------------------------------
-| AUTHOR:			ITSOLUTION24.COM
+| AUTHOR:			 
 | -----------------------------------------------------
-| EMAIL:			info@itsolution24.com
+| EMAIL:			info@ 
 | -----------------------------------------------------
-| COPYRIGHT:		RESERVED BY ITSOLUTION24.COM
+| COPYRIGHT:		RESERVED BY  
 | -----------------------------------------------------
-| WEBSITE:			http://itsolution24.com
+| WEBSITE:			http:// 
 | -----------------------------------------------------
 */
 class ModelProduct extends Model 
 {
 	public function getPrecios(){
 		$sql = "select * from precios where estado='1';";
+  		$result = $this->db->query($sql);	
+		$result = $result->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	public function getPricesItem($id_p){
+		$sql = "SELECT * FROM products p, precios pr WHERE p.category_price = pr.id AND p.p_id = '$id_p';";
   		$result = $this->db->query($sql);	
 		$result = $result->fetchAll(PDO::FETCH_ASSOC);
 		return $result;
@@ -29,7 +36,6 @@ class ModelProduct extends Model
     	$preference = isset($data['preference']) && !empty($data['preference']) ? serialize($data['preference']) : serialize(array());
 
     	$product_id = $this->db->lastInsertId();
-
     	if (isset($data['product_store']) && $product_id) {
 			foreach ($data['product_store'] as $store_id) {
 
@@ -457,15 +463,22 @@ class ModelProduct extends Model
 		}
 		if (!$query_string) {
 			if ($category_id) {
+				//var_dump('state 1');
 				$statement = $this->db->prepare("SELECT * FROM `products` 
 				LEFT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
 				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0 OR `products`.`p_type` = 'service') AND `p2s`.`status` = ? AND `products`.`category_id` = ?{$where_query} GROUP BY `product_id`{$limit_query}");
 				$statement->execute(array($store_id, 1, $category_id));
 			} else {
-				$statement = $this->db->prepare("SELECT `products`.*, `selling_item`.`item_id`, SUM(`selling_item`.`item_total`) as `total` FROM `selling_item` 
+				//var_dump('state 2',$store_id);
+				/*$statement = $this->db->prepare("SELECT `products`.*, `selling_item`.`item_id`, SUM(`selling_item`.`item_total`) as `total` FROM `selling_item` 
 				RIGHT JOIN `products` ON (`selling_item`.`item_id` = `products`.`p_id`) 
 				RIGHT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
 				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0 OR `products`.`p_type` = 'service') AND `p2s`.`status` = ?{$where_query}
+				GROUP BY `product_id` ORDER BY `total` DESC{$limit_query}");*/
+				$statement = $this->db->prepare("SELECT `products`.*, `selling_item`.`item_id`, SUM(`selling_item`.`item_total`) as `total` FROM `selling_item` 
+				RIGHT JOIN `products` ON (`selling_item`.`item_id` = `products`.`p_id`) 
+				RIGHT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
+				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0) AND `p2s`.`status` = ?
 				GROUP BY `product_id` ORDER BY `total` DESC{$limit_query}");
 				$statement->execute(array($store_id, 1));
 			}
@@ -474,11 +487,13 @@ class ModelProduct extends Model
 
 		if ($query_string || (!$query_string && empty($products))) {
 			if ($category_id) {
+				//var_dump('state 3');
 				$statement = $this->db->prepare("SELECT * FROM `products` 
 				LEFT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
 				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0 OR `products`.`p_type` = 'service') AND (UPPER($field) LIKE '" . strtoupper($query_string) . "%' OR `products`.`p_code` = '{$query_string}') AND `p2s`.`status` = ? AND `products`.`category_id` = ?{$where_query}{$limit_query}");
 				$statement->execute(array($store_id, 1, $category_id));
 			} else {
+				//var_dump('state 4');
 				$statement = $this->db->prepare("SELECT * FROM `products` 
 				LEFT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
 				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0 OR `products`.`p_type` = 'service') AND (UPPER($field) LIKE '" . strtoupper($query_string) . "%' OR `products`.`p_code` = '{$query_string}') AND `p2s`.`status` = ?{$where_query}{$limit_query}");

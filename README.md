@@ -1,6 +1,6 @@
 # Modern POS - Point of Sale with Stock Management System
 
-## Designed and Developed by ITSolution24.com
+## Designed and Developed by  
 
 ## itsolution24bd@gmail.com
 ## Contact +8801737346122

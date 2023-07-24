@@ -14,7 +14,7 @@ function checkInternetConnection($domain = 'www.google.com')
   return false;
 }
 
-// function checkValidationServerConnection($domain = 'www.itsolution24.com')  
+// function checkValidationServerConnection($domain = 'www. ')  
 // {
 //   if($socket =@ fsockopen($domain, 80, $errno, $errstr, 30)) {
 //     fclose($socket);
@@ -35,7 +35,7 @@ function url_exists($url) {
     return ($status[1] == 200 || $status[1] == 422);
 }
 
-function checkValidationServerConnection($url = 'http://tracker.itsolution24.com/pos30/check.php')  
+function checkValidationServerConnection($url = 'http://tracker. /pos30/check.php')  
 {
     if(url_exists($url)) {
         return true;

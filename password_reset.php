@@ -4,13 +4,13 @@
 | -----------------------------------------------------
 | PRODUCT NAME: 	Modern POS - Point of Sale with Stock Management System
 | -----------------------------------------------------
-| AUTHOR:     ITSOLUTION24.COM
+| AUTHOR:      
 | -----------------------------------------------------
-| EMAIL:      info@itsolution24.com
+| EMAIL:      info@ 
 | -----------------------------------------------------
-| COPYRIGHT:    RESERVED BY ITSOLUTION24.COM
+| COPYRIGHT:    RESERVED BY  
 | -----------------------------------------------------
-| WEBSITE:      http://itsolution24.com
+| WEBSITE:      http:// 
 | -----------------------------------------------------
 */
 
@@ -189,7 +189,7 @@ if (!$user) {
       </form>
     </div>
     <div class="copyright text-center">
-      <p>&copy; <a href="http://itsolution24.com">ITsolution24.com</a>, v<?php echo settings('version'); ?></p>
+      <p>&copy; <a href="http:// "> </a>, v<?php echo settings('version'); ?></p>
     </div>
   </section>
 

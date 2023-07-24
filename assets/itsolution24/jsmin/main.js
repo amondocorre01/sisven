@@ -11426,7 +11426,6 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                         if (window.store.auto_print == 1 && window.store.remote_printing == 1) {
                             PrintReceiptModal($scope);
                         }
-                        
                         if (window.getParameterByName("holding_id") || window.getParameterByName("qref")) {
                             localStorage.setItem("swal",
                                 window.swal({

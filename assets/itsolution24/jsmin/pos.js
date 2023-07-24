@@ -10883,6 +10883,7 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.checkout = function() {
+                    console.log('checkout 4');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var actionUrl = form.attr("action");
@@ -10906,10 +10907,13 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                         if (window.store.sound_effect == 1) {
                             window.storeApp.playSound("modify.mp3");
                         }
+                        let url_print = window.baseUrl + "/admin/view_invoice.php?invoice_id="+response.data.invoice_id;
+                        setTimeout(() => { window.open(url_print,'_blank'); }, 100);
+
                         if (window.store.auto_print == 1 && window.store.remote_printing == 1) {
+                            console.log('prin');
                             PrintReceiptModal($scope);
                         }
-                        
                         if (window.getParameterByName("holding_id") || window.getParameterByName("qref")) {
                             localStorage.setItem("swal",
                                 window.swal({

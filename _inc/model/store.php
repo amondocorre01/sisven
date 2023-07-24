@@ -3,13 +3,13 @@
 | -----------------------------------------------------
 | PRODUCT NAME: 	Modern POS
 | -----------------------------------------------------
-| AUTHOR:			ITSOLUTION24.COM
+| AUTHOR:			 
 | -----------------------------------------------------
-| EMAIL:			info@itsolution24.com
+| EMAIL:			info@ 
 | -----------------------------------------------------
-| COPYRIGHT:		RESERVED BY ITSOLUTION24.COM
+| COPYRIGHT:		RESERVED BY  
 | -----------------------------------------------------
-| WEBSITE:			http://itsolution24.com
+| WEBSITE:			http:// 
 | -----------------------------------------------------
 */
 class ModelStore extends Model 

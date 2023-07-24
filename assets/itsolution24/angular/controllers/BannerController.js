@@ -206,7 +206,7 @@ function (
                     doc['footer']=(function(page, pages) {
                         return {
                             columns: [
-                                'Powered by ITSOLUTION24.COM',
+                                'Powered by  ',
                                 {
                                     // This is the right column
                                     alignment: 'right',

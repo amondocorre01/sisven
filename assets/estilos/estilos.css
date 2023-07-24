@@ -1,0 +1,16 @@
+.blueSample{
+    background: blue;
+    color: white;
+  }
+  .redSample{
+    background: red;
+    color: white;
+  }
+  .greenSample{
+    background: green;
+    color: white;
+  }
+  .pricetableSelected{
+    background-color: #424242 ;
+    color: white;
+  }

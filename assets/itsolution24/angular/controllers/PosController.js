@@ -401,13 +401,88 @@ function (
     // ===============================================
     // End Invoice Calculation
     // ===============================================
+    $scope.selectItemToSell = function (id, prods){
+        console.log('this is id',id);
+        console.log('this is id',prods);
+        prods = JSON.stringify(prods);
+        var $queryString = "p_id=" + id + "&action_type=LISTPRICESBYITEM";
+        $http({
+            url: API_URL + "/_inc/pos.php?" + $queryString,
+            method: "GET",
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: "json"
+        }).
+        then(function(response) {
+            let prices_item = response.data;
+            if(prices_item.length <= 0){
+                swal("Aviso","El producto no tiene precios.","warning");
+                return false;
+            }
+            prices_item = prices_item[0];
+            let th = (prices_item.precio_a)?'<th>PRECIO 1</th>':'';
+            th += prices_item.precio_b?'<th>PRECIO 2</th>':'';
+            th += prices_item.precio_c?'<th>PRECIO 3</th>':'';
+            th += prices_item.precio_d?'<th>PRECIO 4</th>':'';
+            th += prices_item.precio_e?'<th>PRECIO 5</th>':'';
 
+            let td = prices_item.precio_a?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_a}</td>`:'';
+            td += prices_item.precio_b?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_b}</td>`:'';
+            td += prices_item.precio_c?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_c}</td>`:'';
+            td += prices_item.precio_d?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_d}</td>`:'';
+            td += prices_item.precio_e?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_e}</td>`:'';
+            openModalPrices(th,td,id,prods);
+        });
+        return;
+        
+    }
+
+    function openModalPrices(th,td,id,prods){
+        Swal.fire({
+            title: 'Seleccione un precio:',
+            width: 600,
+            html:`<center><table id="tablaA" class="table">
+            <thead>
+            <tr class="text-center bg-gray">
+                ${th}
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center pay-top">
+              ${td}
+            </tr>
+            </tbody>
+          </table>
+          <input type="hidden" id="nombre"></center>`,
+            confirmButtonText: 'Agregar',
+            preConfirm: () => {
+                let valor = $('#nombre').val();
+                if (valor){
+                    return valor;
+                }else{
+                    swal("Advertencia","Seleccione un precio.","warning");
+                    return false;
+                }
+            }
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if(result){
+                if (result.isConfirmed) {
+                    $scope.addItemToInvoice(id,prods,null,result.value);
+                } 
+            }else{
+                return;
+            }
+            
+          })
+    }
 
     // ===============================================
     // Start Add Product to Invoice
     // ===============================================
 
-    $scope.addItemToInvoice = function (id, qty, index) {
+    $scope.addItemToInvoice = function (id, qty, index, priceSelected) {
         var proQty;
         var qty = parseFloat(qty);
         if (!qty) {
@@ -433,15 +508,17 @@ function (
             dataType: "json"
         }).
         then(function(response) {
+            console.log('aqui');
             if (response.data.p_id) {
+                response.data.sell_price = parseFloat(priceSelected);
                 var find = window._.find($scope.itemArray, function (item) { 
-                    return item.id == response.data.p_id;
+                    return item.id == response.data.p_id && item.price == priceSelected;
                 });
                 proQty = parseFloat(response.data.quantity_in_stock);
                 qty = proQty > 0 && proQty < 1 ? proQty : qty;
                 if (find) {
                     window._.map($scope.itemArray, function (item) {
-                        if (item.id == response.data.p_id) {
+                        if (item.id == response.data.p_id && item.price == priceSelected) {
                             if (!$scope.isPrevQuantityCalcculate && window.getParameterByName("customer_id") && window.getParameterByName("invoice_id")) {
                                 $scope.isPrevQuantityCalcculate = true;
                                 $scope.prevQuantity = item.quantity;
@@ -493,6 +570,10 @@ function (
                     }
                     var item = [];
                     item.id = response.data.p_id;
+                    id = ''+(Date.now()) / 1000;
+                    id = id.replace(/\./g, '');
+                    console.log('iden',id);
+                    item.iden = id;
                     item.pType = response.data.p_type;
                     item.categoryId = response.data.category_id;
                     item.supId = response.data.sup_id;
@@ -575,6 +656,7 @@ function (
                             }
                             item.quantity = parseFloat(item.quantity) - qty;
                             $("#item_quantity_"+item.id).val(item.quantity);
+                            console.log('here q');
                             item.subTotal = item.subTotal - (parseFloat(item.price) * qty);
                             $scope.totalQuantity = $scope.totalQuantity - qty;
                             $scope.totalAmount = $scope.totalAmount - parseFloat(item.price);
@@ -1087,6 +1169,7 @@ function (
                             if ($scope.error == false) {
                                 $scope.error = true;
                                 $scope.triggerKeyup = true;
+                                console.log('here w');
                                 $("#item_quantity_"+item.id).val(response.data.quantity_in_stock).trigger("keyup");
                                 $(document).trigger("click");
                                 if (window.store.sound_effect == 1) {

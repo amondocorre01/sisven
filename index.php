@@ -3,13 +3,13 @@
 | -----------------------------------------------------
 | PRODUCT NAME: 	Modern POS - Point of Sale with Stock Management System
 | -----------------------------------------------------
-| AUTHOR:     ITSOLUTION24.COM
+| AUTHOR:      
 | -----------------------------------------------------
-| EMAIL:      info@itsolution24.com
+| EMAIL:      info@ 
 | -----------------------------------------------------
-| COPYRIGHT:    RESERVED BY ITSOLUTION24.COM
+| COPYRIGHT:    RESERVED BY  
 | -----------------------------------------------------
-| WEBSITE:      http://itsolution24.com
+| WEBSITE:      http:// 
 | -----------------------------------------------------
 */
 include("_init.php");
@@ -322,7 +322,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
         <table class="table table-bordered table-striped">
           <tbody>
             <?php foreach (get_users() as $the_user) : ?>
-              <?php if (in_array($the_user['email'], array('admin@itsolution24.com', 'cashier@itsolution24.com', 'salesman@itsolution24.com'))) : ?>
+              <?php if (in_array($the_user['email'], array('admin@ ', 'cashier@ ', 'salesman@ '))) : ?>
                 <tr title="Login as Admin">
                   <td class="username" data-username="<?php echo $the_user['email'];?>"><?php echo $the_user['email'];?></td>
                   <td class="password text-center" data-password="<?php echo $the_user['raw_password'];?>"><?php echo $the_user['raw_password'];?></td>

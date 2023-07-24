@@ -52,9 +52,9 @@ $customer_id = isset($request->get['customer_id']) ? $request->get['customer_id'
 				<div class="btn-toolbar mb-10" role="toolbar" aria-label="...">
 					 <div class="btn-group btn-group-justified" role="group" aria-label="...">
 					 	<div class="btn-group" role="group">
-							<a ng-show="isInstallment" id="activeSellWithInstallmentBtn" ng-click="sellWithInstallment()" onClick="return false;" class="btn btn-default btn-md" style="border-radius:50px;">
+							<!--<a ng-show="isInstallment" id="activeSellWithInstallmentBtn" ng-click="sellWithInstallment()" onClick="return false;" class="btn btn-default btn-md" style="border-radius:50px;">
 							<span class="fa fa-fw fa-refresh"></span> <?php echo trans('button_sell_with_installment'); ?>
-							</a>
+							</a>-->
 						</div>
 					</div>
 				</div>

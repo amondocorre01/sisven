@@ -7,7 +7,7 @@
 		<div class="panel-body">
 			<p class="text-center"><b>For any query just knock us via codecanyon comment box</b></p>
 			<h4 class="text-center">
-			    <a href="http://docs.itsolution24.com/pos">Online Documentation Here</a>
+			    <a href="http://docs. /pos">Online Documentation Here</a>
 			</h4>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 			<a class="btn btn-warning btn-block" href="http://codecanyon.net/user/itsolution-24/follow" target="_blank">Follow Us &rarr;</a>
 		</div>
 		<div class="col-sm-4">
-			<a class="btn btn-success btn-block" href="http://itsolution24.com/contact.php" target="_blank">Contact Us &rarr;</a>
+			<a class="btn btn-success btn-block" href="http:// /contact.php" target="_blank">Contact Us &rarr;</a>
 		</div>	
 	</div>
 	<br>

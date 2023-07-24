@@ -6247,6 +6247,7 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                 };
 
                 $scope.checkout = function() {
+                    console.log('checkout 2');
                     $(document).find(".modal").addClass("overlay-loader");
                     var form = $("#checkout-form");
                     var actionUrl = form.attr("action");
@@ -6273,7 +6274,6 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                         if (window.store.auto_print == 1 && window.store.remote_printing == 1) {
                             PrintReceiptModal($scope);
                         }
-                        
                         if (window.getParameterByName("holding_id") || window.getParameterByName("qref")) {
                             localStorage.setItem("swal",
                                 window.swal({

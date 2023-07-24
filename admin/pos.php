@@ -36,6 +36,8 @@ if ($order_printer_ids) {
 	}
 }
 ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="../assets/estilos/estilos.css" type="text/css" rel="stylesheet">
 <!DOCTYPE html>
 <html lang="<?php echo $document->langTag($active_lang);?>" ng-app="angularApp">
 <head>
@@ -211,7 +213,8 @@ if ($order_printer_ids) {
 									</div>
 								</div>
 								<div ng-repeat="products in productArray" id="{{ $index }}" class="btn btn-flat item">
-									<div ng-click="addItemToInvoice(products.p_id,products)" class="item-inner">
+									<!--<div ng-click="addItemToInvoice(products.p_id,products)" data-id="{{productos.p_id}}" class="item-inner" data-toggle="modal" data-target="#exampleModal">-->
+									<div ng-click="selectItemToSell(products.p_id,products)" data-id="{{productos.p_id}}" class="item-inner">
 										<div class="item-img">
 											<img ng-src="{{ products.p_image }}" alt="{{ products.p_name }}">
 										</div>
@@ -506,6 +509,28 @@ if ($order_printer_ids) {
     </aside>
     <div class="scrolling-sidebar-bg"></div>
     <div class="scrolling-sidebar-mask"></div>
+
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- Scrolling Sidebar End -->
 
 	<?php if (DEMO || USECOMPILEDASSET) : ?>
@@ -594,3 +619,29 @@ if ($order_printer_ids) {
 </noscript>
 </body>
 </html>
+
+<script>
+	$(document).ready(function() {
+
+	 $('#tablaA tbody').on('click', 'td', function(i, row) {
+		console.log('sss');
+        		$('#tablaA td').addClass("blueSample");
+            	$('#tablaA td').removeClass("redSample");
+        		$(this).removeClass("blueSample");
+            $(this).addClass("redSample");
+            $("#nombre").val($(this).text());
+        });
+  // Instrucciones a ejecutar al terminar la carga
+		
+});
+function selectColTablePrices(e){
+	let verif = $(e).hasClass("pricetableSelected");
+	$('#tablaA td').removeClass("pricetableSelected");
+	if(!verif){
+		$(e).addClass("pricetableSelected");
+		$("#nombre").val($(e).text());
+	}else{
+		$("#nombre").val('');
+	}
+}
+</script>
