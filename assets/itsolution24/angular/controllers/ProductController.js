@@ -646,11 +646,9 @@ function (
             contentType: false,
             dataType: "json"
         }).then(function(response) {
-            console.log('guardaddo',response.data);
-            let dato = parseInt((response.data));
-            console.log('dato',dato)
             if(response.data){
-                console.log('gaurdado');
+                prices = [];
+                loadDataSelectPrices();
                 window.swal({
                     title: "Agregado!",
                     text: 'Se agrego correctamente.',
