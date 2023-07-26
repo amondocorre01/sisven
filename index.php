@@ -346,7 +346,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
       <?php endif; ?>
     </div>
     <div class="copyright text-center">
-      <p>&copy; <a href="https://www.udemy.com/user/tayler-darden/">Mas proyectos aqui</a>, </p>
+      <p>&copy; <a href="http://www.vanguardsolutionsbolivia.com/">Mas proyectos aqui</a>, </p>
     </div>
   </section>
 
