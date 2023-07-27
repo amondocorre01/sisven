@@ -1,7 +1,7 @@
 <?php
 /*   __________________________________________________________
 $timezone = 'America/La_Paz';
-    |    Web: http:// , E-mail: itsolution24bd@gmail.com   |
+    |    Web: http:// , E-mail: amondocorre@gmail.com   |
     |__________________________________________________________|
 */
 require_once ('_inc/helper/api.php');

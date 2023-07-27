@@ -308,7 +308,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
             <div class="input-group-addon input-sm">
               <svg class="svg-icon"><use href="#icon-password"></svg>
             </div>
-            <input type="password" class="form-control" value="WISDOM SRL" placeholder="Password" name="password">
+            <input type="password" class="form-control" value="tusolutionweb" placeholder="Password" name="password">
           </div>
         </div>
 
@@ -346,7 +346,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
       <?php endif; ?>
     </div>
     <div class="copyright text-center">
-      <p>&copy; <a href="https://www.udemy.com/user/tayler-darden/">Mas proyectos aqui</a>, </p>
+      <p>&copy; <a href="http://www.vanguardsolutionsbolivia.com/">Mas proyectos aqui</a>, </p>
     </div>
   </section>
 
