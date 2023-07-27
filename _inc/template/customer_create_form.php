@@ -126,11 +126,28 @@
     </div>
 
     <div class="form-group">
-      <label for="ubicacion_gps" class="col-sm-3 control-label">UBICACION GPS</label>
+      <label for="ubicacion_gps" class="col-sm-3 control-label">UBICACION GPS...</label>
       <div class="col-sm-7">
         <input type="text" class="form-control" name="ubicacion_gps" id="ubicacion_gps">
+        <br/>
+        <div class="col-sm-12 " id="mi-map" style="height: 400px"></div>
+        <script> var map = L.map('mi-map').setView([-17.3870, -66.1547], 14);
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+          let ubi = null;
+          var layer = L.marker([-17.3870, -66.1547]).addTo(map);
+          map.on('click', onMapClick)
+          function onMapClick(e) {            
+            layer.remove();
+            layer = L.marker(e.latlng).addTo(map);
+            $("#ubicacion_gps").val(e.latlng.lat +" , "+e.latlng.lng);
+          }
+      </script>
       </div>
+      
     </div>
+    <
 
     <div class="form-group">
       <label for="customer_city" class="col-sm-3 control-label">

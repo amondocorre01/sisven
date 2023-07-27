@@ -19,6 +19,15 @@
     </div>
 
     <div class="form-group">
+    <label for="p_type" class="col-sm-3 control-label">
+      <?php echo sprintf(trans('label_product_type'),null); ?>
+    </label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" id="p_type" value="<?php echo $product['p_type']; ?>" name="p_type" readonly>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="p_name" class="col-sm-3 control-label">
         <?php echo sprintf(trans('label_name'),null); ?>
       </label>
@@ -76,6 +85,12 @@
         </select>
       </div>
     </div>
+    <div class="form-group">
+            <label for="p_name" class="col-sm-3 control-label">MEDIDA</label>
+            <div class="col-sm-7">  
+              <input type="text" class="form-control" name="medida" id="medida" value="<?php echo $product['medida']; ?>">
+            </div>
+          </div>
 
     <div class="form-group">
       <label for="brand_id" class="col-sm-3 control-label">
