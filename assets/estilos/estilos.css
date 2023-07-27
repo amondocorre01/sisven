@@ -14,3 +14,10 @@
     background-color: #424242 ;
     color: white;
   }
+  .white{
+    color: white;
+  }
+
+  .btn-save-prices{
+    float: right !important;
+  }

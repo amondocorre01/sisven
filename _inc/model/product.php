@@ -16,7 +16,7 @@ class ModelProduct extends Model
 {
 	public function saveNewPricesList($data){
 		//var_dump('dats',$data);
-		$statement = $this->db->prepare("INSERT INTO precios(descripcion, precio_a, precio_b, precio_c, precio_d, precio_e, estado) VALUES (?, ?, ?, ?, ?, ?, ?)");
+		$statement = $this->db->prepare("INSERT INTO precios(descripcion, precio_1, precio_2, precio_3, precio_4, precio_5, estado) VALUES (?, ?, ?, ?, ?, ?, ?)");
     	$statement->execute(array($data['description_price'], $data['price_1'], $data['price_2'], $data['price_3'], $data['price_4'], $data['price_5'],'1'));
     	$id = $this->db->lastInsertId();
 		return $id;

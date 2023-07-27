@@ -342,17 +342,17 @@ $('#sell_category_price').change(function() {
 
 	if(prices_item.length > 0){
 		prices_item = prices_item[0];
-		let th = (prices_item.precio_a)?'<th>PRECIO 1</th>':'';
-		th += prices_item.precio_b?'<th>PRECIO 2</th>':'';
-		th += prices_item.precio_c?'<th>PRECIO 3</th>':'';
-		th += prices_item.precio_d?'<th>PRECIO 4</th>':'';
-		th += prices_item.precio_e?'<th>PRECIO 5</th>':'';
+		let th = (prices_item.precio_1)?'<th>PRECIO 1</th>':'';
+		th += prices_item.precio_2?'<th>PRECIO 2</th>':'';
+		th += prices_item.precio_3?'<th>PRECIO 3</th>':'';
+		th += prices_item.precio_4?'<th>PRECIO 4</th>':'';
+		th += prices_item.precio_5?'<th>PRECIO 5</th>':'';
 
-		let td = prices_item.precio_a?`<td>${prices_item.precio_a}</td>`:'';
-		td += prices_item.precio_b?`<td>${prices_item.precio_b}</td>`:'';
-		td += prices_item.precio_c?`<td>${prices_item.precio_c}</td>`:'';
-		td += prices_item.precio_d?`<td>${prices_item.precio_d}</td>`:'';
-		td += prices_item.precio_e?`<td>${prices_item.precio_e}</td>`:'';
+		let td = prices_item.precio_1?`<td>${prices_item.precio_1}</td>`:'';
+		td += prices_item.precio_2?`<td>${prices_item.precio_2}</td>`:'';
+		td += prices_item.precio_3?`<td>${prices_item.precio_3}</td>`:'';
+		td += prices_item.precio_4?`<td>${prices_item.precio_4}</td>`:'';
+		td += prices_item.precio_5?`<td>${prices_item.precio_5}</td>`:'';
 		
 		let table = `<table class="table table-bordered table-striped table-hover">
 					<thead><tr class="bg-gray">${th}</tr></thead> 

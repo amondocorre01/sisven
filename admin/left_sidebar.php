@@ -754,7 +754,42 @@
         <?php endif; ?>
 
         <ul class="treeview-menu">
-          
+        <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
+            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+              <a href="asign_prices.php">
+                <svg class="svg-icon"><use href="#icon-eye"></svg>
+                ASIGNACION DE PRECIOS
+              </a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
+            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+              <a href="report_products.php">
+                <svg class="svg-icon"><use href="#icon-eye"></svg>
+                REPORTES X PRODUCTO
+              </a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
+            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+              <a href="report_sales.php">
+                <svg class="svg-icon"><use href="#icon-eye"></svg>
+                REPORTES X VENTAS
+              </a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
+            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+              <a href="report_accounts_receivable.php">
+                <svg class="svg-icon"><use href="#icon-eye"></svg>
+                CUENTAS X COBRAR
+              </a>
+            </li>
+          <?php endif; ?>
+
           <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
             <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
               <a href="report_overview.php?type=sell">

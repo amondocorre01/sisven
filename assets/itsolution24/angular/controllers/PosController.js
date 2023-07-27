@@ -421,17 +421,17 @@ function (
                 return false;
             }
             prices_item = prices_item[0];
-            let th = (prices_item.precio_a)?'<th>PRECIO 1</th>':'';
-            th += prices_item.precio_b?'<th>PRECIO 2</th>':'';
-            th += prices_item.precio_c?'<th>PRECIO 3</th>':'';
-            th += prices_item.precio_d?'<th>PRECIO 4</th>':'';
-            th += prices_item.precio_e?'<th>PRECIO 5</th>':'';
+            let th = (prices_item.precio_1)?'<th>PRECIO 1</th>':'';
+            th += prices_item.precio_2?'<th>PRECIO 2</th>':'';
+            th += prices_item.precio_3?'<th>PRECIO 3</th>':'';
+            th += prices_item.precio_4?'<th>PRECIO 4</th>':'';
+            th += prices_item.precio_5?'<th>PRECIO 5</th>':'';
 
-            let td = prices_item.precio_a?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_a}</td>`:'';
-            td += prices_item.precio_b?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_b}</td>`:'';
-            td += prices_item.precio_c?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_c}</td>`:'';
-            td += prices_item.precio_d?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_d}</td>`:'';
-            td += prices_item.precio_e?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_e}</td>`:'';
+            let td = prices_item.precio_1?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_1}</td>`:'';
+            td += prices_item.precio_2?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_2}</td>`:'';
+            td += prices_item.precio_3?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_3}</td>`:'';
+            td += prices_item.precio_4?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_4}</td>`:'';
+            td += prices_item.precio_5?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_5}</td>`:'';
             openModalPrices(th,td,id,prods);
         });
         return;

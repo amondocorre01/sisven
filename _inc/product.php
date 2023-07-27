@@ -30,6 +30,14 @@ if(isset($request->post['get-precios'])){
   echo json_encode($result);
   exit();
 }
+//api get productos
+/*
+if(isset($request->post['get-report-products'])){
+  $product_model = registry()->get('loader')->model('reportes');
+  $result = $product_model->getReportProducts();
+  echo json_encode($result);
+  exit();
+}*/
 
 if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action_type']) && $request->post['action_type'] == 'CREATENEWPRICES'){
   $result = $product_model->saveNewPricesList($request->post);
