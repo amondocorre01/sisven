@@ -217,7 +217,7 @@
           </div>
 
           <div class="form-group">
-            <label for="p_name" class="col-sm-3 control-label">UNIDAD POR CAJA</label>
+            <label for="p_name" class="col-sm-3 control-label">UNIDAD POR CAJA en mts2</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="unidad_caja" id="unidad_caja" value="<?php echo $product['unidad_caja']; ?>">
             </div>
