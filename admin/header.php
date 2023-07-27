@@ -228,6 +228,9 @@ $demo_text = 'This is a demo version. Data will be reset in every 6 hours interv
         <!-- Anguar Filemanager JS -->
         <script src="../assets/itsolution24/angularmin/filemanager.js" type="text/javascript"></script>
     <?php endif; ?>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
 </head>
 <body class="hold-transition sidebar-mini<?php echo $body_class; ?><?php echo isRTL() ? ' rtl' : null;?>">
 <div class="hidden"><?php include('../assets/itsolution24/img/iconmin/icon.svg');?></div>
