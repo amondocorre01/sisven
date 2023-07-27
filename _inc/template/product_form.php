@@ -210,7 +210,7 @@
           </div>
 
           <div class="form-group">
-            <label for="p_name" class="col-sm-3 control-label">MEDIDA</label>
+            <label for="p_name" class="col-sm-3 control-label">MEDIDA (B x H)</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="medida" id="medida" value="<?php echo $product['medida']; ?>">
             </div>
