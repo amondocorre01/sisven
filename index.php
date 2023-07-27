@@ -33,7 +33,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && $request->get['action_type']
     // Check total try
     $from = date('Y-m-d H:i:s', strtotime('-'.(int)UNLOCK_ACCOUNT_AFTER.' minutes', time()));
     $to = date('Y-m-d H:i:s'); 
-    $ip = '192.168.0.1';//get_real_ip();
+    $ip = get_real_ip();
     $statement = db()->prepare("SELECT `id` FROM `login_logs` WHERE `status` = ? AND `ip` = ? AND `created_at` >= ? AND `created_at` <= ?");
     $statement->execute(array('error', $ip, $from, $to));
     $total_try = $statement->rowCount();
