@@ -16,6 +16,7 @@ class ModelUser extends Model
 {
 	public function addUser($data) 
 	{
+		
     	$statement = $this->db->prepare("INSERT INTO `users` (username, email, mobile, password, raw_password, group_id, dob, user_image, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     	$statement->execute(array($data['username'], $data['email'], $data['mobile'], md5($data['password']), $data['password'], (int)$data['group_id'], $data['dob'], $data['user_image'], date_time()));
 
