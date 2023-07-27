@@ -126,7 +126,7 @@
     </div>
 
     <div class="form-group">
-      <label for="ubicacion_gps" class="col-sm-3 control-label">UBICACION GPS</label>
+      <label for="ubicacion_gps" class="col-sm-3 control-label">UBICACION GPS...</label>
       <div class="col-sm-7">
         <input type="text" class="form-control" name="ubicacion_gps" id="ubicacion_gps">
         <br/>
