@@ -18,8 +18,8 @@ class Uri implements UriInterface
      * we apply this default host when no host is given yet to form a
      * valid URI.
      */
-    //const HTTP_DEFAULT_HOST = '177.222.102.167';
-    const HTTP_DEFAULT_HOST = 'localhost';
+    const HTTP_DEFAULT_HOST = '50.28.39.135';
+    //const HTTP_DEFAULT_HOST = 'localhost';
     private static $defaultPorts = [
         'http'  => 80,
         'https' => 443,
