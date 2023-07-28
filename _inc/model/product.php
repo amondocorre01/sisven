@@ -16,8 +16,15 @@ class ModelProduct extends Model
 {
 	public function saveNewPricesList($data){
 		//var_dump('dats',$data);
-		$statement = $this->db->prepare("INSERT INTO precios(descripcion, precio_1, precio_2, precio_3, precio_4, precio_5, estado) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    	$statement->execute(array($data['description_price'], $data['price_1'], $data['price_2'], $data['price_3'], $data['price_4'], $data['price_5'],'1'));
+		$descripcion = $data['description_price'];
+		$price1 = floatval($data['price_1']);
+		$price2 = floatval($data['price_2']); 
+		$price3 = floatval($data['price_3']); 
+		$price4 = floatval($data['price_4']); 
+		$price5 = floatval($data['price_5']);
+		$statement = $this->db->query("insert INTO precios(descripcion, precio_1, precio_2, precio_3, precio_4, precio_5, estado) VALUES ('$descripcion', '$price1', '$price2', '$price3', '$price4', $price5, 1)");
+		//$statement = $this->db->prepare("INSERT INTO precios(descripcion, precio_1, precio_2, precio_3, precio_4, precio_5, estado) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    	//$statement->execute(array($data['description_price'], floatval($data['price_1']), floatval($data['price_2']), floatval($data['price_3']), floatval($data['price_4']), floatval($data['price_5']),1));
     	$id = $this->db->lastInsertId();
 		return $id;
 	}

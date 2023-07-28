@@ -200,14 +200,14 @@ $tab_active = isset($request->get['tab']) ? $request->get['tab'] : 'general';
           </div>
 
           <div class="form-group">
-            <label for="p_name" class="col-sm-3 control-label">MEDIDA</label>
+            <label for="p_name" class="col-sm-3 control-label">MEDIDA (B x H)</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="medida" id="medida">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="p_name" class="col-sm-3 control-label">UNIDAD POR CAJA</label>
+            <label for="p_name" class="col-sm-3 control-label">UNIDAD POR CAJA EN mts2</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="unidad_caja" id="unidad_caja">
             </div>

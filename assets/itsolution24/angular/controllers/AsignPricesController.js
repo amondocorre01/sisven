@@ -36,7 +36,23 @@ function (
             };
             
             axios.request(options).then(function (response) {
-                console.log('respuesta',response);
+                //console.log('respuesta',response);
+                if(response.data){
+                    let datos = response.data;
+                    datos.forEach(element => {
+                        console.log('aaa',element);
+                        let idPrices = element.id_precios;
+                        let data = {}
+                        data.nameColumn = element.columna_piso;
+                        data.currentPrice = element.precio_piso;
+                        addDataForSave(idPrices,data);
+                        data = {}
+                        data.nameColumn = element.columna_techo;
+                        data.currentPrice = element.precio_techo;
+                        addDataForSave(idPrices,data);
+                    });
+                }
+                
             }).catch(function (error) {
                 console.error(error);
             });
