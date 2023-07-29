@@ -404,6 +404,7 @@ function (
     $scope.selectItemToSell = function (id, prods){
         console.log('this is id',id);
         console.log('this is id',prods);
+
         prods = JSON.stringify(prods);
         var $queryString = "p_id=" + id + "&action_type=LISTPRICESBYITEM";
         $http({
