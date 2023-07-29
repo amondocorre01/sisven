@@ -26,7 +26,15 @@ function redirect($url, $status = 302)
 	header('Location: ' . str_replace(array('&amp;', "\n", "\r"), array('&', '', ''), $url), true, $status);
 	exit();
 }
-
+function getIp(){
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		return  $_SERVER['HTTP_CLIENT_IP'];
+	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		return $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} else {
+		return $_SERVER['REMOTE_ADDR'];
+	}
+}
 function is_https()
 {
 	return isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on" ? true : false;
