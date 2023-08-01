@@ -214,7 +214,7 @@ if ($order_printer_ids) {
 								</div>
 								<div ng-repeat="products in productArray" id="{{ $index }}" class="btn btn-flat item">
 									<!--<div ng-click="addItemToInvoice(products.p_id,products)" data-id="{{productos.p_id}}" class="item-inner" data-toggle="modal" data-target="#exampleModal">-->
-									<div ng-click="selectItemToSell(products.p_id,products)" data-id="{{productos.p_id}}" class="item-inner">
+									<div ng-click="selectItemToSell(products.p_id,products)" data-id_us="<?=$id_us?>" data-id="{{productos.p_id}}" class="item-inner">
 										<div class="item-img">
 											<img ng-src="{{ products.p_image }}" alt="{{ products.p_name }}">
 										</div>

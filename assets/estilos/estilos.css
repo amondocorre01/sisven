@@ -21,3 +21,7 @@
   .btn-save-prices{
     float: right !important;
   }
+  .btn-tree{
+    float: right !important;
+    margin-top: -3px;
+  }

@@ -402,10 +402,19 @@ function (
     // End Invoice Calculation
     // ===============================================
     $scope.selectItemToSell = function (id, prods){
-        console.log('this is id',id);
-        console.log('this is id',prods);
+        //console.log('this is id',id);
+        //console.log('this is id',prods);
         prods = JSON.stringify(prods);
         var $queryString = "p_id=" + id + "&action_type=LISTPRICESBYITEM";
+
+        var find = window._.find($scope.itemArray, function (item) { 
+            return item.id == id;
+        });
+        if (find) {
+            swal("Aviso","El producto ya se encuentra en la lista.","warning");
+            return;
+        }
+
         $http({
             url: API_URL + "/_inc/pos.php?" + $queryString,
             method: "GET",
@@ -421,17 +430,11 @@ function (
                 return false;
             }
             prices_item = prices_item[0];
-            let th = (prices_item.precio_1)?'<th>PRECIO 1</th>':'';
-            th += prices_item.precio_2?'<th>PRECIO 2</th>':'';
-            th += prices_item.precio_3?'<th>PRECIO 3</th>':'';
-            th += prices_item.precio_4?'<th>PRECIO 4</th>':'';
-            th += prices_item.precio_5?'<th>PRECIO 5</th>':'';
+            let th = (prices_item.precio_piso)?'<th style="text-align: center;">PRECIO 1</th>':'';
+            th += prices_item.precio_techo?'<th style="text-align: center;">PRECIO 2</th>':'';
 
-            let td = prices_item.precio_1?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_1}</td>`:'';
-            td += prices_item.precio_2?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_2}</td>`:'';
-            td += prices_item.precio_3?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_3}</td>`:'';
-            td += prices_item.precio_4?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_4}</td>`:'';
-            td += prices_item.precio_5?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_5}</td>`:'';
+            let td = prices_item.precio_piso?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_piso}</td>`:'';
+            td += prices_item.precio_techo?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_techo}</td>`:'';
             openModalPrices(th,td,id,prods);
         });
         return;
@@ -508,17 +511,16 @@ function (
             dataType: "json"
         }).
         then(function(response) {
-            console.log('aqui');
             if (response.data.p_id) {
                 response.data.sell_price = parseFloat(priceSelected);
                 var find = window._.find($scope.itemArray, function (item) { 
-                    return item.id == response.data.p_id && item.price == priceSelected;
+                    return item.id == response.data.p_id ;
                 });
                 proQty = parseFloat(response.data.quantity_in_stock);
                 qty = proQty > 0 && proQty < 1 ? proQty : qty;
                 if (find) {
                     window._.map($scope.itemArray, function (item) {
-                        if (item.id == response.data.p_id && item.price == priceSelected) {
+                        if (item.id == response.data.p_id) {
                             if (!$scope.isPrevQuantityCalcculate && window.getParameterByName("customer_id") && window.getParameterByName("invoice_id")) {
                                 $scope.isPrevQuantityCalcculate = true;
                                 $scope.prevQuantity = item.quantity;

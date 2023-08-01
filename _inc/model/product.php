@@ -37,7 +37,14 @@ class ModelProduct extends Model
 	}
 
 	public function getPricesItem($id_p){
+		$id_us = $_SESSION['id'];
 		$sql = "SELECT * FROM products p, precios pr WHERE p.category_price = pr.id AND p.p_id = '$id_p';";
+		//$sql = "select pr.id as id_precio_actual from FROM products p, precios pr WHERE p.category_price = pr.id AND p.p_id = '$id_p'; ";
+		$result = $this->db->query($sql);	
+		$result = $result->fetchAll(PDO::FETCH_ASSOC);
+		$id_precios = $result[0];
+		$id_precios = $id_precios['id'];
+		$sql = "select * from precios_usuarios where id_usuario = '$id_us' and id_precios = '$id_precios'";
   		$result = $this->db->query($sql);	
 		$result = $result->fetchAll(PDO::FETCH_ASSOC);
 		return $result;

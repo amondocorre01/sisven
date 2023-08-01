@@ -24,10 +24,17 @@ if (user_group_id() != 1 && !has_permission('access', 'create_sell_invoice')) {
 $product_model = registry()->get('loader')->model('product');
 $store_id = store_id();
 if ($request->server['REQUEST_METHOD'] == 'GET' && isset($request->get['action_type']) && $request->get['action_type'] == 'LISTPRICESBYITEM') {
-	$id_p = $request->get['p_id'];
-	$prices = $product_model->getPricesItem($id_p);
-	echo json_encode($prices);
-	exit();
+	try {
+		$id_p = $request->get['p_id'];
+		$prices = $product_model->getPricesItem($id_p);
+		echo json_encode($prices);
+		exit();
+	} catch (Exception $e) {
+		header('HTTP/1.1 422 Unprocessable Entity');
+		header('Content-Type: application/json; charset=UTF-8');
+		echo json_encode(array('errorMsg' => $e->getMessage()));
+		exit();
+	}
 }
 // Fetch customer by id
 if ($request->server['REQUEST_METHOD'] == 'GET' && isset($request->get['action_type']) && $request->get['action_type'] == 'CUSTOMER') {
