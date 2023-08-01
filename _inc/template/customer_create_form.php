@@ -177,13 +177,38 @@
         </div>
       </div>
     <?php endif; ?>
-
+    
     <div class="form-group">
       <label for="country" class="col-sm-3 control-label">
         <?php echo trans('label_country'); ?>
       </label>
       <div class="col-sm-7">
         <?php echo countrySelector(isset($request->post['customer_country']) ? $request->post['customer_country'] : null, 'customer_country', 'customer_country'); ?>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nit" class="col-sm-3 control-label">NIT</label>
+      <div class="col-sm-7">
+        <input type="number" class="form-control" name="nit" id="nit">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="business_name" class="col-sm-3 control-label">RAZON SOCIAL</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" name="business_name" id="business_name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="representative" class="col-sm-3 control-label">REPRESENTANTE LEGAL</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" name="representative" id="representative">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="customer_contact" class="col-sm-3 control-label">CONTACTO</label>
+      <div class="col-sm-7">
+        <input type="number" class="form-control" name="customer_contact" id="customer_contact">
       </div>
     </div>
 

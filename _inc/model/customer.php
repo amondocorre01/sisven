@@ -18,8 +18,8 @@ class ModelCustomer extends Model
 	{
 		$gtin = isset($data['gtin']) ? $data['gtin'] : '';
 		$customer_state = isset($data['customer_state']) ? $data['customer_state'] : '';
-    	$statement = $this->db->prepare("INSERT INTO `customers` (customer_name, dob, customer_email, customer_mobile, customer_sex, customer_age, gtin, customer_address, customer_city, customer_state, customer_country, created_at, customer_business, tipo_cliente, celular_2, ubicacion_gps) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    	$statement->execute(array($data['customer_name'], date('Y-m-d',strtotime($data['dob'])), $data['customer_email'], $data['customer_mobile'], $data['customer_sex'], $data['customer_age'], $gtin, $data['customer_address'], $data['customer_city'], $customer_state, $data['customer_country'], date_time(), $data['customer_business'], $data['tipo_cliente'], $data['celular_2'], $data['ubicacion_gps']));
+    	$statement = $this->db->prepare("INSERT INTO `customers` (customer_name, dob, customer_email, customer_mobile, customer_sex, customer_age, gtin, customer_address, customer_city, customer_state, customer_country, created_at, customer_business, tipo_cliente, celular_2, ubicacion_gps,customer_nit,business_name,representative,customer_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    	$statement->execute(array($data['customer_name'], date('Y-m-d',strtotime($data['dob'])), $data['customer_email'], $data['customer_mobile'], $data['customer_sex'], $data['customer_age'], $gtin, $data['customer_address'], $data['customer_city'], $customer_state, $data['customer_country'], date_time(), $data['customer_business'], $data['tipo_cliente'], $data['celular_2'], $data['ubicacion_gps'], $data['nit'], $data['business_name'],$data['representative'],$data['customer_contact']));
     	$customer_id = $this->db->lastInsertId();
 		if (isset($data['customer_store'])) {
 			foreach ($data['customer_store'] as $store_id) {
