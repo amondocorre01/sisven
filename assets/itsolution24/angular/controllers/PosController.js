@@ -435,17 +435,18 @@ function (
 
             let td = prices_item.precio_piso?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_piso}</td>`:'';
             td += prices_item.precio_techo?`<td onclick="selectColTablePrices(this);" style="cursor:pointer;">${prices_item.precio_techo}</td>`:'';
-            openModalPrices(th,td,id,prods);
+            openModalPrices(prices_item.precio_piso, prices_item.precio_techo,th,td,id,prods);
         });
         return;
         
     }
 
-    function openModalPrices(th,td,id,prods){
+    function openModalPrices(precio_piso, precio_techo, th,td,id,prods){
         Swal.fire({
             title: 'Seleccione un precio:',
             width: 600,
-            html:`<center><table id="tablaA" class="table">
+            html:`<center>
+            <table id="tablaA" class="table">
             <thead>
             <tr class="text-center bg-gray">
                 ${th}
@@ -457,14 +458,32 @@ function (
             </tr>
             </tbody>
           </table>
-          <input type="hidden" id="nombre"></center>`,
+          <span style="font-family: Verdana; font-size 14pt;">Ingrese un precio entre el primer y el segundo precio valido.</span>
+          </center>
+            <div>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <br>
+                <input class="form-control" type="number" name="precio_elegible" id="nombre"/>
+            </div>
+            <div class="col-sm-4">
+            </div>
+            </div>`,
             confirmButtonText: 'Agregar',
             preConfirm: () => {
                 let valor = $('#nombre').val();
                 if (valor){
-                    return valor;
+                    if(valor >= precio_piso && valor <= precio_techo){
+                        return valor;
+                    }else{
+                        let message = `Seleccione un precio entre ${precio_piso} y ${precio_techo}`; 
+                        swal("Advertencia",message,"warning");
+                         return false;
+                    }
+                    
                 }else{
-                    swal("Advertencia","Seleccione un precio.","warning");
+                    swal("Advertencia","Seleccione o ingrese un precio.","warning");
                     return false;
                 }
             }
