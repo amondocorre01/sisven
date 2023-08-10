@@ -458,7 +458,7 @@ function (
             </tr>
             </tbody>
           </table>
-          <span style="font-family: Verdana; font-size 14pt;">Ingrese un precio entre el primer y el segundo precio valido.</span>
+          <span style="font-family: Verdana; font-size 14pt;">Ingrese un precio entre ${precio_piso} y ${precio_techo}.</span>
           </center>
             <div>
             <div class="col-sm-4">
