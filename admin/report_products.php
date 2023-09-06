@@ -102,6 +102,14 @@ include ("left_sidebar.php");
     </div>
     <?php endif; ?>
     <?php
+
+        if(isset($_POST['buscar'])){
+          var_dump('Vamos a buscar por los valore dinamicos');
+          //var_dump($_POST);
+          //$fecha_final = set_value('fecha_final');
+          //var_dump('FECHA FINAL',$fecha_final);
+          //exit();
+        }
         $report = getReportProducts();
         $report = json_decode(json_encode($report, JSON_FORCE_OBJECT));
 
@@ -124,6 +132,28 @@ include ("left_sidebar.php");
             <h3 class="box-title">
               
             </h3>
+            <form id="form-search-report" method="POST" onsubmit="valida(this)" action="#">
+            <div class="row">
+                <div class="col-offset-1 col-md-2">
+                    <label for="">Fecha Inicial</label>
+                    <input type="date" name="fecha_inicial">
+                </div>
+                <div class="col-offset-1 col-md-2">
+                    <label for="">Fecha Final</label>
+                    <input type="date" name="fecha_final">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-offset-1 col-md-2">
+                    <label for="">Cliente</label>
+                    <select id="category_id" class="form-control select2 " name="category_id">
+                        <option value="">Seleccione</option>
+                        <?php foreach ($suppliers as $key => $value) {?>
+                            <option value="<?php echo $value->sup_id; ?>"><?php echo $value->sup_name; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-offset-1 col-md-2">
                     <label for="">Proveedor</label>
@@ -169,10 +199,10 @@ include ("left_sidebar.php");
                 <div class="col-offset-1 col-md-2">
                 <label for="" class="white">.</label>
                 <br>
-                <input class="btn btn-primary btn-lg" type="submit" value="Buscar" name="buscar" >
+                <input class="btn btn-primary btn-lg" type="submit" value="Generar" name="buscar" >
                 </div>
             </div>
-            
+            </form>
           </div>
           <div class="box-body">
             <div class="table-responsive">
@@ -186,7 +216,7 @@ include ("left_sidebar.php");
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php /*
                         foreach ($report as $key => $value) {
                             echo "<tr>
                                     <td>$value->p_code</td>
@@ -194,7 +224,7 @@ include ("left_sidebar.php");
                                     <td>$value->medida</td>
                                     <td>$value->unidad_caja</td>
                                 </tr>";
-                        }
+                        }*/
                     ?>
                 </tbody>
             </table>
@@ -218,6 +248,25 @@ include ("left_sidebar.php");
       "processing": true,
       "lengthChange": true,
       "autoWidth": false,
+      "ajax": {
+                url: "../_inc/report_productos.php",
+                dataSrc: "data"
+               },
+      "columns": [
+        { "data": "name" },
+        { "data": "position" },
+        { "data": "office" },
+        {
+          sortable: false,
+          "render": function ( data, type, row, meta ) {
+              var buttonID = "rollover_"+row.id;
+              if(row.edit){
+                return '<a id='+buttonID+' class="btn btn-success editarBtn" role="button">Editar</a>';
+              }
+              return '';
+          }
+        }
+      ],
       //"responsive": true,
       language:{ search: "Buscar", lengthMenu: "Mostrar _MENU_", zeroRecords: "No se encontró nada",
                     info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros", infoEmpty: "No hay registros disponibles", 
@@ -227,10 +276,10 @@ include ("left_sidebar.php");
         "dom": "lfBrtip",
         "serverSide": false,
         "aLengthMenu": [
-            [10, 25, 50, 100, 200, -1],
-            [10, 25, 50, 100, 200, "All"]
+            [5,10, 25, 50, 100, 200, -1],
+            [5,10, 25, 50, 100, 200, "All"]
         ],
-        "pageLength":10,
+        "pageLength":5,
         "columnDefs": [
             {"targets": [0, 1, 2, 3], "orderable": true},
             {"className": "text-center", "targets": [ 3]},
@@ -317,7 +366,11 @@ include ("left_sidebar.php");
     });
 
 
-
 });
+
+function valida(e){
+  console.log('Validando el formulario');
+  return false;
+}
     
 </script>

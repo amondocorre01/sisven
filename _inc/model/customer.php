@@ -148,6 +148,13 @@ class ModelCustomer extends Model
         return $customer_id;
 	}
 
+	public function getCustomersAll(){
+		$statement = $this->db->prepare("SELECT * FROM `customers`;");
+		$statement->execute();
+		$customer = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $customer;
+	}
+
 	public function getCustomer($customer_id, $store_id = null) 
 	{
 		$store_id = $store_id ? $store_id : store_id();

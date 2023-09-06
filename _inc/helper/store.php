@@ -91,6 +91,18 @@ function get_printers($store_id = null)
 	return $printer_model->getPrinters();
 }
 
+function get_the_store($id, $field = null) 
+{
+	$model = registry()->get('loader')->model('store');
+	$user = $model->getStore($id);
+	if ($field && isset($user[$field])) {
+		return $user[$field];
+	} elseif ($field) {
+		return;
+	}
+	return $user;
+}
+
 
 
 // if (!function_exists('health_checkup'))

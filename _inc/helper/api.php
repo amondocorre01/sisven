@@ -4,6 +4,10 @@ function getReportProducts(){
 	$model = registry()->get('loader')->model('reportes');
 	return $model->getReportProducts();
 }
+function getCustomers(){
+	$model = registry()->get('loader')->model('customer');
+	return $model->getCustomersAll();
+}
 
 function getSuppliers(){
 	$model = registry()->get('loader')->model('reportes');
@@ -40,4 +44,8 @@ function getPricesUser($user){
 	return $model->getPricesUser($user);
 }
 
+function getProducts(){
+	$model = registry()->get('loader')->model('product');
+	return $model->getProducts();
+}
 ?>
