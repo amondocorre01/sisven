@@ -48,4 +48,9 @@ function getProducts(){
 	$model = registry()->get('loader')->model('product');
 	return $model->getProducts();
 }
+
+function getConceptosCostosImportacion(){
+	$model = registry()->get('loader')->model('purchase');
+	return $model->getConceptosCostosImportacion();
+}
 ?>

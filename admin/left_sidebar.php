@@ -805,6 +805,15 @@
 
           <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
             <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+              <a href="report_sales_detail.php">
+                <svg class="svg-icon"><use href="#icon-eye"></svg>
+                REPORTES X VENTAS DET.
+              </a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
+            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
               <a href="report_accounts_receivable.php">
                 <svg class="svg-icon"><use href="#icon-eye"></svg>
                 CUENTAS X COBRAR

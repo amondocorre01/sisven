@@ -462,9 +462,18 @@ function (
         e.preventDefault();
         var $tag = $(this);
         var $btn = $tag.button("loading");
+        let datos_imp = localStorage.getItem('importacion');
+        datos_imp = JSON.parse(datos_imp);
+        $('#field_importacion').val(JSON.stringify(datos_imp));
+
         var form = $($tag.data("form"));
         form.find(".alert").remove();
         var actionUrl = form.attr("action");
+        
+        /*
+        let dataFin = {};
+        dataFin.form = form.serialize();
+        dataFin.importaciones = datos_imp;*/
         $http({
             url: window.baseUrl + "/_inc/" + actionUrl + "?action_type=CREATE",
             method: "POST",
@@ -480,12 +489,15 @@ function (
             $(":input[type=\"button\"]").prop("disabled", false);
             var alertMsg = response.data.msg;
             window.toastr.success(alertMsg, "Success!");
+            localStorage.removeItem("importacion");
+            $('#edt_import').hide();
             id = response.data.id;
             dt.DataTable().ajax.reload(function(json) {
                 if ($("#row_"+id).length) {
                     $("#row_"+id).flash("yellow", 5000);
                 }
             }, false);
+
         }, function(response) {
             $btn.button("reset");
             $(":input[type=\"button\"]").prop("disabled", false);

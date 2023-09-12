@@ -18,6 +18,8 @@ $user_id = user_id();
 // LOAD INVOICE MODEL
 $invoice_model = registry()->get('loader')->model('purchase');
 
+//var_dump($request->post);
+//exit();
 // Validate post data
 function validate_request_data($request) 
 {    
@@ -255,7 +257,35 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
         $statement = db()->prepare("UPDATE `product_to_store` SET `purchase_price` = ?, `sell_price` = ?, `quantity_in_stock` = `quantity_in_stock` + $item_quantity WHERE `product_id` = ? AND `store_id` = ?");
         $statement->execute(array($item_purchase_price, $item_selling_price, $id, $store_id));
     }
+    //datos de importacion
+    if(isset($_POST['importacion'])){
+      $dat = $request->post['importacion'];
+      $dat = html_entity_decode($dat);
+      $dat = json_decode($dat,false);
+      $importaciones = $dat->importaciones;
 
+      $nro_orden = $dat->nro_orden;
+      $razon_social =$dat->razon_social;
+      $proveeedor =$dat->proveedor;
+      $nro_dui = $dat->nro_dui;
+      $almacen_destino = $dat->almacen_destino;
+      $fecha = $dat->fecha;
+      $productos = $dat->productos_data;
+
+      $sql = "insert into hoja_importacion(invoice_id,nro_orden,razon_social,proveedor,nro_dui,almacen_destino,fecha,productos,estado)values('$invoice_id','$nro_orden','$razon_social','$proveeedor','$nro_dui','$almacen_destino','$fecha','$productos','1')";
+      //var_dump($sql);
+      db()->query($sql);
+      foreach ($importaciones as $key => $value) {
+        //$invoice_id = '1';
+        $id_concepto = $value->id_concepto;
+        $valor_bruto = $value->valor_bruto;
+        $valor_iva = $value->valor_iva;
+        $valor_neto = $value->valor_neto;
+        $valor_referencia = $value->valor_referencia;
+        $sql = "insert into costos_importacion(id_concepto,datos_referencia,valor_bruto,iva,valor_neto,invoice_id,estado)values('$id_concepto','$valor_referencia','$valor_bruto','$valor_iva','$valor_neto','$invoice_id','1')";
+        db()->query($sql);
+      }
+    }
     // Insert purchase info
     $statement = db()->prepare("INSERT INTO `purchase_info` (invoice_id, store_id, sup_id, total_item, purchase_note, attachment, shipping_status, created_by, purchase_date, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $statement->execute(array($invoice_id, $store_id, $sup_id, $total_item, $purchase_note, $attachment, $shipping_status, $user_id, $purchase_date, $created_at));

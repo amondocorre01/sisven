@@ -24,7 +24,7 @@ class ModelVentas extends Model
 
         if($fecha_inicial && $fecha_final){
             if($fecha_inicial == $fecha_final){
-                $fecha_inicial = $fecha_inicial.'00:00:00';
+                $fecha_inicial = $fecha_inicial.' 00:00:00';
                 $fecha_final = $fecha_final.' 23:59:59';
             }
             $consulta .= " and created_at between '$fecha_inicial' AND '$fecha_final'";

@@ -205,4 +205,11 @@ class ModelPurchase extends Model
 		$statement->execute(array(store_id()));
 		return $statement->rowCount();
 	}
+
+	public function getConceptosCostosImportacion(){
+		$statement = $this->db->prepare("SELECT * FROM `concepto_costos_importacion` where estado='1';");
+		$statement->execute();
+		$products = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $products;
+	}
 }

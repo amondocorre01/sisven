@@ -1,5 +1,12 @@
+
+<center> 
+  <a href="purchase_importacion.php" class="btn btn-primary">Agregar Costos de Importación</a>
+  <span id="edt_import">
+</span>
+</center>
 <form id="form-purchase" class="form-horizontal" action="purchase.php" method="post" enctype="multipart/form-data">
 <input type="hidden" name="action_type" value="CREATE">
+<input type="hidden" name="importacion" id="field_importacion">
   <div class="box-body">
     <div class="form-group">
       <label for="date" class="col-sm-3 control-label">
@@ -251,6 +258,12 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+  let imp=`<a href="purchase_importacion.php?editar_hoja_importacion=1" class="btn btn-warning">Editar Costos de Importación</a>`;
+  let datos_imp = localStorage.getItem('importacion');
+  if(datos_imp){
+    $('#edt_import').html(imp);
+  }
+
   $('.datepicker').datepicker({
     language: langCode,
     format: "yyyy-mm-dd",
