@@ -88,6 +88,7 @@ function validate_existance($request, $id = 0)
   }
 }
 
+
 // Create users
 if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action_type']) && $request->post['action_type'] == 'CREATE')
 {
