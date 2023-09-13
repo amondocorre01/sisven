@@ -16,7 +16,7 @@ window.angularApp.factory("AddInvoiceNoteModal", ["API_URL", "window", "jQuery",
                             "<button ng-click=\"closeAddNoteModal();\" id=\"reset-btn\" name=\"reset-btn\" class=\"btn btn-success\"><span class=\"fa fa-fw fa-check\"></span> SAVE </button>&nbsp;&nbsp;" +
                         "</div>",
             controller: function ($scope, $uibModalInstance) {
-                $scope.modal_title = "Add Note";            
+                $scope.modal_title = "Agregar Nota";            
                  var invoiceNote;
                 $(document).on("change keyup blur", "#note", function () {
                     var $this = $(this);
