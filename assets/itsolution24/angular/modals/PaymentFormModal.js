@@ -111,7 +111,7 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                             localStorage.setItem("swal",
                                 window.swal({
                                   title: "Success!",
-                                  text:  "Invoice ID: "+$scope.invoiceId,
+                                  text:  "Comprobante Nro: "+$scope.invoiceId,
                                   type: "success",
                                   timer: 3000,
                                   showConfirmButton: false

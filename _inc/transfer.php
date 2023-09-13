@@ -185,7 +185,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
       $info = $statement->fetch(PDO::FETCH_ASSOC);
 
       if ($info['payment_status'] == 'due') {
-        throw new Exception("Invoice ID: " . $item_info['invoice_id'] . " has due. Please, paid the due before transfer");
+        throw new Exception("Comprobante Nro: " . $item_info['invoice_id'] . " has due. Please, paid the due before transfer");
       }
 
       $ref_invoice_id = $item_info['invoice_id'];
