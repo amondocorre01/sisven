@@ -764,7 +764,8 @@ $columns = array(
         'dt' => 'invoice_id',
         'formatter' => function( $d, $row) {
             $o = $row['invoice_id'];           
-            return $o;
+            //return $o;
+            return '<a href="purchase_importacion.php?ver_hoja_importacion='.$o.'">'.$o.'</a>';
         }
     ),
     array( 

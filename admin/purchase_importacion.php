@@ -160,18 +160,18 @@ include ("left_sidebar.php");
                             if($value->cif){
                                 $cif.= '<tr>
                                 <th><input type="hidden" iden="'.$value->id.'" name="concepto" value="'.$value->concepto.'" >  '.$value->concepto.'</th>
-                                <td><input cif="1" type="text" name="fob_refer"></td>
-                                <td><input cif="1" type="text" name="fob_vbruto" onchange="calcularTotales(this);" onkeypress="return filterFloat(event,this);"></td>
-                                <td><input cif="1" type="text" name="fob_iva" onchange="calcularTotales(this);" onkeypress="return filterFloat(event,this);"></td>
-                                <td><input cif="1" type="text" name="fob_neto" onkeypress="return filterFloat(event,this);" readonly></td>
+                                <td><input cif="1" type="text" name="fob_refer" autocomplete="off"></td>
+                                <td><input cif="1" type="text" name="fob_vbruto" onchange="calcularTotales();" onkeypress="return filterFloat(event,this);" autocomplete="off"></td>
+                                <td><input cif="1" type="text" name="fob_iva" onchange="calcularTotales();" onkeypress="return filterFloat(event,this);" autocomplete="off"></td>
+                                <td><input cif="1" type="text" name="fob_neto" onkeypress="return filterFloat(event,this);" readonly style="background-color: #FFE680;"></td>
                                 </tr>';
                             }else{
                                 $s2.= '<tr>
                                 <th> <input type="hidden" iden="'.$value->id.'" name="concepto" value="'.$value->concepto.'" >'.$value->concepto.'</th>
                                 <td><input cif="0" type="text" name="fob_refer"></td>
-                                <td><input cif="0" type="text" name="fob_vbruto" onchange="calcularTotales(this);" onkeypress="return filterFloat(event,this);"></td>
-                                <td><input cif="0" type="text" name="fob_iva" onchange="calcularTotales(this);" onkeypress="return filterFloat(event,this);"></td>
-                                <td><input cif="0" type="text" name="fob_neto" onkeypress="return filterFloat(event,this);"></td>
+                                <td><input cif="0" type="text" name="fob_vbruto" onchange="calcularTotales();" onkeypress="return filterFloat(event,this);" autocomplete="off"></td>
+                                <td><input cif="0" type="text" name="fob_iva" onchange="calcularTotales();" onkeypress="return filterFloat(event,this);" autocomplete="off"></td>
+                                <td><input cif="0" type="text" name="fob_neto" onkeypress="return filterFloat(event,this);" readonly style="background-color: #FFE680;"></td>
                                 </tr>';
                             }
                         }
@@ -180,9 +180,9 @@ include ("left_sidebar.php");
                         echo '<tr>
                         <th></th>
                         <td></td>
-                        <td><input type="text" readonly id="fob_vbruto_total" name="fob_vbruto_total" onchange="calcularTotales(this);" onkeypress="return filterFloat(event,this);"></td>
-                        <td><input type="text" readonly id="fob_iva_total" name="fob_iva_total" onkeypress="return filterFloat(event,this);"></td>
-                        <td><input type="text" readonly id="fob_neto_total"  name="fob_neto_total" onkeypress="return filterFloat(event,this);"></td>
+                        <td><input type="text" readonly id="fob_vbruto_total" name="fob_vbruto_total" onchange="calcularTotales();" onkeypress="return filterFloat(event,this);" style="background-color: #FFE680;"></td>
+                        <td><input type="text" readonly id="fob_iva_total" name="fob_iva_total" onkeypress="return filterFloat(event,this);" style="background-color: #FFE680;"></td>
+                        <td><input type="text" readonly id="fob_neto_total"  name="fob_neto_total" onkeypress="return filterFloat(event,this);" style="background-color: #FFE680;"></td>
                         </tr>';
                     }
                     echo $s2;
@@ -191,9 +191,9 @@ include ("left_sidebar.php");
                     <tr>
                         <th>COSTO TOTAL ALMACENES</th>
                         <td><input type="text" name="ctotal_refer"></td>
-                        <td><input type="text" readonly id="ctotal_vbruto" name="ctotal_vbruto" onkeypress="return filterFloat(event,this);"></td>
-                        <td><input type="text" readonly id="ctotal_iva" name="ctotal_iva" onkeypress="return filterFloat(event,this);"></td>
-                        <td><input type="text" readonly id="ctotal_neto" name="ctotal_neto" onkeypress="return filterFloat(event,this);"></td>
+                        <td><input type="text" readonly id="ctotal_vbruto" name="ctotal_vbruto" onkeypress="return filterFloat(event,this);" style="background-color: #FFE680;"></td>
+                        <td><input type="text" readonly id="ctotal_iva" name="ctotal_iva" onkeypress="return filterFloat(event,this);" style="background-color: #FFE680;"></td>
+                        <td><input type="text" readonly id="ctotal_neto" name="ctotal_neto" onkeypress="return filterFloat(event,this);" style="background-color: #FFE680;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -203,7 +203,7 @@ include ("left_sidebar.php");
           <div>
               <center>
                 <br>
-                <button class="btn btn-primary" onclick="guardarCostosImportacion();">GUARDAR</button>
+                <button class="btn btn-primary" id="btn-guardarCostosImportacion" onclick="guardarCostosImportacion();">GUARDAR</button>
               </center>
           </div>
         </div>
@@ -272,7 +272,7 @@ function buscarDatos(){
   $(dt).DataTable().ajax.reload(null, false);
 }
 
-function calcularTotales(e){
+function calcularTotales(){
   let fob_vbruto = document.getElementsByName("fob_vbruto");
   let fob_iva = document.getElementsByName("fob_iva");
   let fob_neto = document.getElementsByName("fob_neto");
@@ -388,14 +388,83 @@ async function guardarCostosImportacion(){
 
 function loadEdit(){
   let datos_imp = localStorage.getItem('importacion');
-  datos_imp = JSON.parse(datos_imp);
+
+
+  if(datos_imp){
+    datos_imp = JSON.parse(datos_imp);
+    $('#nro_orden').val(datos_imp.nro_orden);
+    $('#razon_social').val(datos_imp.razon_social);
+    $('#almacen_destino').val(datos_imp.almacen_destino);
+    $('#fecha').val(datos_imp.fecha);
+    $('#productos_data').val(datos_imp.productos_data);
+    $('#nro_dui').val(datos_imp.nro_dui);
+    $('#proveedor').val(datos_imp.proveedor);
+
+    let importaciones_array = datos_imp.importaciones;
+
+    let fob_refer = document.getElementsByName("fob_refer");
+    let fob_vbruto = document.getElementsByName("fob_vbruto");
+    let fob_iva = document.getElementsByName("fob_iva");
+    let fob_neto = document.getElementsByName("fob_neto");
+    let conceptos = document.getElementsByName("concepto");
+
+    var importaciones = new Array();
+    fob_vbruto.forEach((element,key) => {
+      $(fob_refer[key]).val(importaciones_array[key].valor_referencia);
+      $(fob_vbruto[key]).val(importaciones_array[key].valor_bruto);
+      $(fob_iva[key]).val(importaciones_array[key].valor_iva);
+      $(fob_neto[key]).val(importaciones_array[key].valor_neto);
+    });
+    calcularTotales();
+  }
 }
 
 $(document).ready(function(){     
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);                        
-  console.log('aaa',urlParams.has('editar_hoja_importacion'));   
+  let urlHas = urlParams.has('editar_hoja_importacion');
+  if(urlHas){
+    loadEdit();
+  }
+  let urlHasView = urlParams.has('ver_hoja_importacion');
+  if(urlHasView){
+    $('#btn-guardarCostosImportacion').hide();
+    $("input").attr('readonly',true);
+    let invoice_iden = urlParams.get('ver_hoja_importacion');
+    loadView(invoice_iden);
+  }
 });
+
+function loadView(id){
+  console.log('data',id);
+  $.post('../_inc/importacion_view.php', {invoice_id:id})
+    .done(function (datos_imp) {
+      $('#nro_orden').val(datos_imp.nro_orden);
+      $('#razon_social').val(datos_imp.razon_social);
+      $('#almacen_destino').val(datos_imp.almacen_destino);
+      $('#fecha').val(datos_imp.fecha);
+      $('#productos_data').val(datos_imp.productos_data);
+      $('#nro_dui').val(datos_imp.nro_dui);
+      $('#proveedor').val(datos_imp.proveedor);
+
+      let importaciones_array = datos_imp.importaciones;
+
+      let fob_refer = document.getElementsByName("fob_refer");
+      let fob_vbruto = document.getElementsByName("fob_vbruto");
+      let fob_iva = document.getElementsByName("fob_iva");
+      let fob_neto = document.getElementsByName("fob_neto");
+      let conceptos = document.getElementsByName("concepto");
+
+      var importaciones = new Array();
+      fob_vbruto.forEach((element,key) => {
+        $(fob_refer[key]).val(importaciones_array[key].valor_referencia);
+        $(fob_vbruto[key]).val(importaciones_array[key].valor_bruto);
+        $(fob_iva[key]).val(importaciones_array[key].valor_iva);
+        $(fob_neto[key]).val(importaciones_array[key].valor_neto);
+      });
+      calcularTotales();
+    });
+}
 
     
 </script>
