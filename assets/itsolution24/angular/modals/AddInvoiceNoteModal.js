@@ -9,14 +9,14 @@ window.angularApp.factory("AddInvoiceNoteModal", ["API_URL", "window", "jQuery",
                            "<h3 class=\"modal-title\" id=\"modal-title\"><span class=\"fa fa-fw fa-pencil\"></span> {{ modal_title }}</h3>" +
                         "</div>" +
                         "<div class=\"modal-body\" id=\"modal-body\">" +
-                            "<input type=\"text\" id=\"note\" class=\"form-control\" rows=\"3\" value=\"{{ invoiceNote }}\" placeholder=\"Type any note here...\">" +
+                            "<input type=\"text\" id=\"note\" class=\"form-control\" rows=\"3\" value=\"{{ invoiceNote }}\" placeholder=\"Escriba una nota aqui...\">" +
                         "</div>" +
                         "<div class=\"modal-footer\">" +
                             "<button ng-click=\"clear();\" class=\"btn btn-danger\" type=\"button\"><span class=\"fa fa-fw fa-close\"></span> Clear&nbsp;</button>" +
                             "<button ng-click=\"closeAddNoteModal();\" id=\"reset-btn\" name=\"reset-btn\" class=\"btn btn-success\"><span class=\"fa fa-fw fa-check\"></span> SAVE </button>&nbsp;&nbsp;" +
                         "</div>",
             controller: function ($scope, $uibModalInstance) {
-                $scope.modal_title = "Add Note";            
+                $scope.modal_title = "Agregar Nota";            
                  var invoiceNote;
                 $(document).on("change keyup blur", "#note", function () {
                     var $this = $(this);

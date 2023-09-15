@@ -3472,7 +3472,7 @@ window.angularApp.factory("PrintReceiptModal", ["API_URL", "window", "jQuery", "
 
         receipt_data.info = "";
         receipt_data.info += "Date:" + $scope.invoiceInfo.created_at + "\n";
-        receipt_data.info += "Invoice ID:" + $scope.invoiceInfo.invoice_id + "\n";
+        receipt_data.info += "Comprobante Nro:" + $scope.invoiceInfo.invoice_id + "\n";
         receipt_data.info += "Created By:" + $scope.invoiceInfo.by + "\n";
         receipt_data.info += "\n";
         receipt_data.info += "Customer:" + $scope.invoiceInfo.customer_name + "\n";
@@ -6278,7 +6278,7 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                             localStorage.setItem("swal",
                                 window.swal({
                                   title: "Success!",
-                                  text:  "Invoice ID: "+$scope.invoiceId,
+                                  text:  "Comprobante Nro: "+$scope.invoiceId,
                                   type: "success",
                                   timer: 3000,
                                   showConfirmButton: false
@@ -6297,9 +6297,9 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                             } else if (window.settings.after_sell_page == 'toastr_msg') {
                                 window.toastr.success("ID: "+$scope.invoiceId, "Success!");
                             } else if (window.settings.after_sell_page == 'sweet_alert_msg') {
-                                window.swal("Success.", "ID: "+$scope.invoiceId, "success");
+                                window.swal("Exito.", "ID: "+$scope.invoiceId, "success");
                             } else {
-                                window.swal("Success.", "ID: "+$scope.invoiceId, "success");
+                                window.swal("Exito.", "ID: "+$scope.invoiceId, "success");
                             }
                         }
 
