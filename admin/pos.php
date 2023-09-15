@@ -219,6 +219,8 @@ if ($order_printer_ids) {
 											<img ng-src="{{ products.p_image }}" alt="{{ products.p_name }}">
 										</div>
 										<span class="item-info" data-id="{{ products.p_id }}" data-name="{{ products.p_name }}">
+											Stock:
+											{{products.quantity_in_stock}}
 											<span>
 												{{ products.p_name | cut:true:20:' ...' }}
 											</span>

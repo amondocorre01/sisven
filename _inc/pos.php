@@ -188,6 +188,23 @@ if ($request->server['REQUEST_METHOD'] == 'GET' && isset($request->get['action_t
 			'limit' => $limit,
 		);
 		$products = $product_model->getPosProducts($data, $store_id);
+		/*
+		foreach ($products as $key => $product) {
+			$iden= $product['p_id'];
+			$store_id = store_id();
+			$sql = "select quantity_in_stock FROM `products` LEFT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) WHERE `p2s`.`store_id` = '$store_id' AND (`p_id` = '$iden' OR `p_code` = '$iden') AND `p2s`.`status` = 1 AND (`p2s`.`quantity_in_stock` > 0 OR `products`.`p_type` = 'standard') ";
+			$result = db()->query($sql);
+    		$result = $result->fetch(PDO::FETCH_ASSOC);
+			$cant= count($result);
+			if($cant == 1){
+				$quantity_in_stock = $result['quantity_in_stock'];
+				$quantity_in_stock = floatval($quantity_in_stock);
+				$quantity_in_stock = round($quantity_in_stock, 2);
+				$products[$key]['quantity_in_stock'] = $quantity_in_stock;
+			}else{
+				$products[$key]['quantity_in_stock'] = '0';
+			}
+		}*/
 		// $data = array(
 		// 	'query_string' => $query_string,
 		// 	'field' => $field,

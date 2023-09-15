@@ -506,7 +506,7 @@ class ModelProduct extends Model
 				RIGHT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
 				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0 OR `products`.`p_type` = 'service') AND `p2s`.`status` = ?{$where_query}
 				GROUP BY `product_id` ORDER BY `total` DESC{$limit_query}");*/
-				$statement = $this->db->prepare("SELECT `products`.*, `selling_item`.`item_id`, SUM(`selling_item`.`item_total`) as `total` FROM `selling_item` 
+				$statement = $this->db->prepare("SELECT `products`.*, `selling_item`.`item_id`, SUM(`selling_item`.`item_total`) as `total`, p2s.quantity_in_stock FROM `selling_item` 
 				RIGHT JOIN `products` ON (`selling_item`.`item_id` = `products`.`p_id`) 
 				RIGHT JOIN `product_to_store` p2s ON (`products`.`p_id` = `p2s`.`product_id`) 
 				WHERE `p2s`.`store_id` = ? AND (`p2s`.`quantity_in_stock` > 0) AND `p2s`.`status` = ?
