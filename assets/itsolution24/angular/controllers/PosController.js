@@ -200,6 +200,8 @@ function (
         then(function(response) {
             $scope.productArray = [];
             window.angular.forEach(response.data.products, function(productItem, key) {
+                //console.log(productItem);
+                productItem.quantity_in_stock= Number(productItem.quantity_in_stock).toFixed(2);
               if (productItem) {
                 var find = window._.find($scope.productArray, function (item) { 
                     return item.p_id == productItem.p_id;
