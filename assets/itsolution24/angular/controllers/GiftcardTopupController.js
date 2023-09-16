@@ -237,8 +237,8 @@ function (
 
         // Alert
         window.swal({
-          title: "Delete!",
-          text: "Are you sure?",
+          title: "Eliminar!",
+          text: "Estas Seguro?",
           icon: "warning",
           buttons: true,
           dangerMode: false,

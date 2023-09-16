@@ -262,8 +262,8 @@ function (
 
         // Alert
         window.swal({
-          title: "Delete!",
-          text: "Are you sure?",
+          title: "Eliminar!",
+          text: "Estas Seguro?",
           icon: "warning",
           buttons: true,
           dangerMode: false,
@@ -280,7 +280,7 @@ function (
                     $(dt).DataTable().ajax.reload( null, false );
                     window.swal("success!", "Currency successfully deleted!", "success");
                 }, function (response) {
-                    window.swal("Oops!", "unable to delete!", "error");
+                    window.swal("Oops!", "no se puede Eliminar!", "error");
                 });
             }
         });
