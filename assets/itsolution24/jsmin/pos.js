@@ -10937,9 +10937,9 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                             } else if (window.settings.after_sell_page == 'toastr_msg') {
                                 window.toastr.success("ID: "+$scope.invoiceId, "Success!");
                             } else if (window.settings.after_sell_page == 'sweet_alert_msg') {
-                                window.swal("Success.", "ID: "+$scope.invoiceId, "success");
+                                window.swal("Success..", "ID: "+$scope.invoiceId, "success");
                             } else {
-                                window.swal("Success.", "ID: "+$scope.invoiceId, "success");
+                                window.swal("Success..", "ID: "+$scope.invoiceId, "success");
                             }
                         }
 
