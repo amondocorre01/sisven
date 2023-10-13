@@ -22,6 +22,9 @@ $document->setTitle(trans('text_supplier_list_title'));
 $concepts = getConceptosCostosImportacion();
 $concepts = json_decode(json_encode($concepts, JSON_FORCE_OBJECT));
 
+$proveeedores = getProveedores();
+$almacenes = getAlmacenes();
+
 // Include Header and Footer
 include("header.php"); 
 include ("left_sidebar.php"); 
@@ -104,41 +107,59 @@ include ("left_sidebar.php");
             <div class="row">
               <div class="col-offset-1 col-md-6">
                     <label for="">Nro. Orden</label>
-                    <input type="text" class="form-control" name="nro_orden" id="nro_orden">
+                    <input type="text" class="form-control" name="nro_orden" id="nro_orden" autocomplete="off">
                 </div>
 
                 <div class="col-offset-1 col-md-6">
                     <label for="">Razón Social</label>
-                    <input type="text" class="form-control" name="razon_social" id="razon_social" >
+                    <input type="text" class="form-control" name="razon_social" id="razon_social" autocomplete="off">
                 </div>
             </div>
             <div class="row">
               <div class="col-offset-1 col-md-6">
                     <label for="">Proveedor</label>
-                    <input type="text" class="form-control" name="proveedor" id="proveedor">
+                    <select class="form-control" name="proveedor" id="proveedor">
+                      <option value="">Seleccione</option>
+                      <?php
+                        foreach ($proveeedores as $key => $value) {
+                          $name = $value['sup_name'];
+                          $id_proveedor = $value['supplier_id'];
+                          echo '<option value="'.$id_proveedor.'">'.$name.'</option>';
+                        }
+                      ?>  
+                    <select>
                 </div>
 
                 <div class="col-offset-1 col-md-6">
                     <label for="">Nro. DUI</label>
-                    <input type="text" class="form-control" name="nro_dui" id="nro_dui">
+                    <input type="text" class="form-control" name="nro_dui" id="nro_dui" autocomplete="off">
                 </div>
             </div>
             <div class="row">
-              <div class="col-offset-1 col-md-6">
+                <div class="col-offset-1 col-md-6">
                     <label for="">Almacen destino</label>
-                    <input type="text" class="form-control" name="almacen_destino" id="almacen_destino">
+                    <select class="form-control" name="almacen_destino" id="almacen_destino">
+                      <option value="">Seleccione</option>
+                      <?php
+                        foreach ($almacenes as $key => $value) {
+                          $name = $value['name'];
+                          $id_almacen = $value['store_id'];
+                          echo '<option value="'.$id_almacen.'">'.$name.'</option>';
+                        }
+                      ?>  
+                    <select>
                 </div>
 
                 <div class="col-offset-1 col-md-6">
                     <label for="">Fecha</label>
-                    <input type="text" class="form-control" name="fecha" id= "fecha">
+                    <input type="date" class="form-control" name="fecha" id= "fecha" autocomplete="off">
                 </div>
             </div>
 
             <div class="row">
               <div class="col-offset-1 col-md-12">
                     <label for="">Productos</label>
-                    <input type="text" class="form-control" name="productos_data" id="productos_data">
+                    <input type="text" class="form-control" name="productos_data" id="productos_data" autocomplete="off">
                 </div>
             </div>
 

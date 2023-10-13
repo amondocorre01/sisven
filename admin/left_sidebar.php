@@ -787,6 +787,15 @@
 
           <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
             <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+              <a href="kardex_productos.php">
+                <svg class="svg-icon"><use href="#icon-eye"></svg>
+                KARDEX PRODUCTOS
+              </a>
+            </li>
+          <?php endif; ?>
+
+          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
+            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
               <a href="report_products.php">
                 <svg class="svg-icon"><use href="#icon-eye"></svg>
                 REPORTES X PRODUCTO

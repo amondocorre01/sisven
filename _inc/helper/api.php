@@ -53,4 +53,14 @@ function getConceptosCostosImportacion(){
 	$model = registry()->get('loader')->model('purchase');
 	return $model->getConceptosCostosImportacion();
 }
+
+function getAlmacenes(){
+	$model = registry()->get('loader')->model('store');
+	return $model->getStores(null);
+}
+
+function getProveedores(){
+	$model = registry()->get('loader')->model('supplier');
+	return $model->getSuppliers(null,null);
+}
 ?>

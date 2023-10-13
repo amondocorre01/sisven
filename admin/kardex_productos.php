@@ -46,7 +46,7 @@ include ("left_sidebar.php");
   <!-- Content Header Start -->
   <section class="content-header">
     <h1>
-      REPORTE
+      KARDEX
       <small>
         <?php echo store('name'); ?>
       </small>
@@ -59,7 +59,7 @@ include ("left_sidebar.php");
         </a>
       </li>
       <li class="active">
-        REPORTE
+        KARDEX
       </li>
     </ol>
   </section>
@@ -122,12 +122,26 @@ include ("left_sidebar.php");
         $stores = getStores();
         $stores = json_decode(json_encode($stores, JSON_FORCE_OBJECT));
 
-        //var_dump($report);
+        $productos = getProducts();
+        $productos = json_decode(json_encode($productos, JSON_FORCE_OBJECT));
         //exit();
     ?>
     <div class="row">
       <div class="col-xs-12">
         <div class="box box-success">
+            <div class="box-header">
+                <h3 class="box-title"></h3>
+                <div class="row">
+                    <label for="">Cliente</label>
+                    <select id="producto_id" class="form-control select2 " name="producto_id">
+                        <option value="">Seleccione</option>
+                        <?php foreach ($productos as $key => $value) {?>
+                            <option value="<?php echo $value->p_id; ?>"><?php echo $value->p_name; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+          <!--
           <div class="box-header">
             <h3 class="box-title">
               
@@ -203,16 +217,22 @@ include ("left_sidebar.php");
                 </div>
             </div>
             </form>
-          </div>
+          </div>-->
+
           <div class="box-body">
             <div class="table-responsive">
             <table id="example" class="table table-bordered table-striped table-hover dataTable" style="width:100%">
                 <thead>
                     <tr class="bg-gray">
-                        <th>CODIGO</th>    
-                        <th>NOMBRE</th>
-                        <th>MEDIDA</th>
-                        <th>UNIDAD CAJA</th>
+                        <th>FECHA</th>    
+                        <th>DETALLE</th>
+                        <th>INGRESO</th>
+                        <th>SALIDA</th>
+                        <th>SALDO</th>
+                        <th>P COSTO</th>
+                        <th>ING_VAL</th>
+                        <th>SAL_VAL</th>
+                        <th>SALDO_VAL</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -242,131 +262,130 @@ include ("left_sidebar.php");
 <?php include ("footer.php"); ?>
 <script>
     //new DataTable('#example');
+    /*
     $(document).ready(function(){
-    var dt= $('#example');
-    dt.dataTable({
-      "processing": true,
-      "lengthChange": true,
-      "autoWidth": false,
-      "ajax": {
-                url: "../_inc/report_productos.php",
-                dataSrc: "data"
-               },
-      "columns": [
-        { "data": "name" },
-        { "data": "position" },
-        { "data": "office" },
-        {
-          sortable: false,
-          "render": function ( data, type, row, meta ) {
-              var buttonID = "rollover_"+row.id;
-              if(row.edit){
-                return '<a id='+buttonID+' class="btn btn-success editarBtn" role="button">Editar</a>';
-              }
-              return '';
-          }
-        }
-      ],
-      //"responsive": true,
-      language:{ search: "Buscar", lengthMenu: "Mostrar _MENU_", zeroRecords: "No se encontró nada",
-                    info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros", infoEmpty: "No hay registros disponibles", 
-                    infoFiltered: "(Filtrado de _MAX_ registros totales)", previous: "Anterior", oPaginate: { sNext:"Siguiente", sLast: "Último", sPrevious: "Anterior", sFirst:"Primero" },                  
-                    }, 
-        "processing": false,
-        "dom": "lfBrtip",
-        "serverSide": false,
-        "aLengthMenu": [
-            [5,10, 25, 50, 100, 200, -1],
-            [5,10, 25, 50, 100, 200, "All"]
-        ],
-        "pageLength":5,
-        "columnDefs": [
-            {"targets": [0, 1, 2, 3], "orderable": true},
-            {"className": "text-center", "targets": [ 3]},
-            {"className": "text-left", "targets": [0,1,2]}
-        ],
-        "buttons": [
+        var dt= $('#example');
+        dt.dataTable({
+        "processing": true,
+        "lengthChange": true,
+        "autoWidth": false,
+        "ajax": {
+                    url: "../_inc/report_productos.php",
+                    dataSrc: "data"
+                },
+        "columns": [
+            { "data": "name" },
+            { "data": "position" },
+            { "data": "office" },
             {
-                extend:    "print",footer: 'true',
-                text:      "<i class=\"fa fa-print\"></i>",
-                titleAttr: "Imprimir",
-                title: "Lista",
-                customize: function ( win ) {
-                    $(win.document.body)
-                        .css( 'font-size', '10pt' )
-                        .append(
-                            '<div><b><i>Powered by:  </i></b></div>'
-                        )
- 
-                    $(win.document.body).find( 'table' )
-                        .addClass( 'compact' )
-                        .css( 'font-size', 'inherit' );
+            sortable: false,
+            "render": function ( data, type, row, meta ) {
+                var buttonID = "rollover_"+row.id;
+                if(row.edit){
+                    return '<a id='+buttonID+' class="btn btn-success editarBtn" role="button">Editar</a>';
                 }
-            },
-            {
-                extend:    "copyHtml5",
-                text:      "<i class=\"fa fa-files-o\"></i>",
-                titleAttr: "Copiar",
-                title: '',
-                //title: window.store.name + " > Products",
-            },
-            {
-                extend:    "excelHtml5",
-                text:      "<i class=\"fa fa-file-excel-o\"></i>",
-                titleAttr: "Excel",
-                title: '',
-                //title: window.store.name + " > Products",
-            },
-            {
-                extend:    "csvHtml5",
-                text:      "<i class=\"fa fa-file-text-o\"></i>",
-                titleAttr: "CSV",
-                title: '',
-                //title: window.store.name + " > Products",
-            },
-            {
-                extend:    "pdfHtml5",
-                text:      "<i class=\"fa fa-file-pdf-o\"></i>",
-                titleAttr: "PDF",
-                download: "open",
-                title: '-',
-                //title: window.store.name + " > Products",
-                customize: function (doc) {
-                    doc.content[1].table.widths =  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-                    doc.pageMargins = [10,10,10,10];
-                    doc.defaultStyle.fontSize = 7;
-                    doc.styles.tableHeader.fontSize = 7;
-                    doc.styles.title.fontSize = 9;
-                    // Remove spaces around page title
-                    doc.content[0].text = doc.content[0].text.trim();
-                    // Header
-                    doc.content.splice( 1, 0, {
-                        margin: [ 0, 0, 0, 12 ],
-                        alignment: 'center',
-                        fontSize: 8,
-                        text: 'Impreso : '+window.formatDate(new Date()),
-                    });
-                    // Create a footer
-                    doc['footer']=(function(page, pages) {
-                        return {
-                            columns: [
-                                ' ',
-                                {
-                                    // This is the right column
-                                    alignment: 'right',
-                                    text: ['page ', { text: page.toString() },  ' of ', { text: pages.toString() }]
-                                }
-                            ],
-                            margin: [10, 0]
-                        };
-                    });
-                }
+                return '';
             }
-        ]
-    });
-
-
-});
+            }
+        ],
+        //"responsive": true,
+        language:{ search: "Buscar", lengthMenu: "Mostrar _MENU_", zeroRecords: "No se encontró nada",
+                        info: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros", infoEmpty: "No hay registros disponibles", 
+                        infoFiltered: "(Filtrado de _MAX_ registros totales)", previous: "Anterior", oPaginate: { sNext:"Siguiente", sLast: "Último", sPrevious: "Anterior", sFirst:"Primero" },                  
+                        }, 
+            "processing": false,
+            "dom": "lfBrtip",
+            "serverSide": false,
+            "aLengthMenu": [
+                [5,10, 25, 50, 100, 200, -1],
+                [5,10, 25, 50, 100, 200, "All"]
+            ],
+            "pageLength":5,
+            "columnDefs": [
+                {"targets": [0, 1, 2, 3], "orderable": true},
+                {"className": "text-center", "targets": [ 3]},
+                {"className": "text-left", "targets": [0,1,2]}
+            ],
+            "buttons": [
+                {
+                    extend:    "print",footer: 'true',
+                    text:      "<i class=\"fa fa-print\"></i>",
+                    titleAttr: "Imprimir",
+                    title: "Lista",
+                    customize: function ( win ) {
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+                            .append(
+                                '<div><b><i>Powered by:  </i></b></div>'
+                            )
+    
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                },
+                {
+                    extend:    "copyHtml5",
+                    text:      "<i class=\"fa fa-files-o\"></i>",
+                    titleAttr: "Copiar",
+                    title: '',
+                    //title: window.store.name + " > Products",
+                },
+                {
+                    extend:    "excelHtml5",
+                    text:      "<i class=\"fa fa-file-excel-o\"></i>",
+                    titleAttr: "Excel",
+                    title: '',
+                    //title: window.store.name + " > Products",
+                },
+                {
+                    extend:    "csvHtml5",
+                    text:      "<i class=\"fa fa-file-text-o\"></i>",
+                    titleAttr: "CSV",
+                    title: '',
+                    //title: window.store.name + " > Products",
+                },
+                {
+                    extend:    "pdfHtml5",
+                    text:      "<i class=\"fa fa-file-pdf-o\"></i>",
+                    titleAttr: "PDF",
+                    download: "open",
+                    title: '-',
+                    //title: window.store.name + " > Products",
+                    customize: function (doc) {
+                        doc.content[1].table.widths =  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                        doc.pageMargins = [10,10,10,10];
+                        doc.defaultStyle.fontSize = 7;
+                        doc.styles.tableHeader.fontSize = 7;
+                        doc.styles.title.fontSize = 9;
+                        // Remove spaces around page title
+                        doc.content[0].text = doc.content[0].text.trim();
+                        // Header
+                        doc.content.splice( 1, 0, {
+                            margin: [ 0, 0, 0, 12 ],
+                            alignment: 'center',
+                            fontSize: 8,
+                            text: 'Impreso : '+window.formatDate(new Date()),
+                        });
+                        // Create a footer
+                        doc['footer']=(function(page, pages) {
+                            return {
+                                columns: [
+                                    ' ',
+                                    {
+                                        // This is the right column
+                                        alignment: 'right',
+                                        text: ['page ', { text: page.toString() },  ' of ', { text: pages.toString() }]
+                                    }
+                                ],
+                                margin: [10, 0]
+                            };
+                        });
+                    }
+                }
+            ]
+        });
+    });*/
 
 function valida(e){
   console.log('Validando el formulario');

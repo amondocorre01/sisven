@@ -186,7 +186,7 @@ function (
         e.stopPropagation();
         e.preventDefault();
         if (!$scope.sup_id) {
-            window.swal("Oops!", "Please, select supplier first", "warning");
+            window.swal("Oops!", "Por favor , selecciones un proveedor", "warning");
         }
         var $this = $(this);
         $this.attr('autocomplete', 'off');
