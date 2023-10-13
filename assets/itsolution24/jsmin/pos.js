@@ -10937,9 +10937,9 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                             } else if (window.settings.after_sell_page == 'toastr_msg') {
                                 window.toastr.success("ID: "+$scope.invoiceId, "Success!");
                             } else if (window.settings.after_sell_page == 'sweet_alert_msg') {
-                                window.swal("Success.", "ID: "+$scope.invoiceId, "success");
+                                window.swal("Registrado..", "ID: "+$scope.invoiceId, "success");
                             } else {
-                                window.swal("Success.", "ID: "+$scope.invoiceId, "success");
+                                window.swal("Registrado..", "ID: "+$scope.invoiceId, "success");
                             }
                         }
 
@@ -10954,7 +10954,7 @@ window.angularApp.factory("PaymentFormModal", ["API_URL", "window", "jQuery", "$
                                 dataType: "json"
                             }).
                             then(function(response) {
-                                window.toastr.success("SMS sent to the number: " + $scope.customerMobileNumber, "Success!");
+                                window.toastr.success("SMS enviado a otro numero: " + $scope.customerMobileNumber, "Success!");
                             }, function(response) {
                                 window.swal("Oops!", response.data.errorMsg, "error");
                             });
@@ -11095,7 +11095,7 @@ window.angularApp.factory("PaymentOnlyModal", ["API_URL", "window", "jQuery", "$
                         dataType: "json"
                     }).
                     then(function(response) {
-                        window.swal("Success", response.data.msg, "success")
+                        window.swal("Registrado", response.data.msg, "success")
                         .then(function(value) {
                             if ($scope.order.datatable) {
                                 $($scope.order.datatable).DataTable().ajax.reload(null, false);
@@ -11250,7 +11250,7 @@ window.angularApp.factory("PurchaseInvoiceInfoEditModal", ["API_URL", "window", 
 
                         // Alert
                         window.swal({
-                          title: "Success!",
+                          title: "Registrado!",
                           text: response.data.msg,
                           icon: "success",
                           buttons: true,
@@ -11378,7 +11378,7 @@ window.angularApp.factory("PurchasePaymentModal", ["API_URL", "window", "jQuery"
                         dataType: "json"
                     }).
                     then(function(response) {
-                        window.swal("Success", response.data.msg, "success")
+                        window.swal("Registrado", response.data.msg, "success")
                         .then(function(value) {
                             $scope.closePurchasePaymentModal();
                         });
@@ -11478,7 +11478,7 @@ window.angularApp.factory("SellReturnModal", ["API_URL", "window", "jQuery", "$h
                         dataType: "json"
                     }).
                     then(function(response) {
-                        window.swal("Success", response.data.msg, "success")
+                        window.swal("Registrado", response.data.msg, "success")
                         .then(function(value) {
                             if ($scope.order.datatable) {
                                 $($scope.order.datatable).DataTable().ajax.reload(null, false);
@@ -11570,7 +11570,7 @@ window.angularApp.factory("PurchaseReturnModal", ["API_URL", "window", "jQuery",
                         dataType: "json"
                     }).
                     then(function(response) {
-                        window.swal("Success", response.data.msg, "success")
+                        window.swal("Registrado", response.data.msg, "success")
                         .then(function(value) {
                             if ($scope.order.datatable) {
                                 $($scope.order.datatable).DataTable().ajax.reload(null, false);
@@ -13869,8 +13869,8 @@ window.jQuery(window).on("load", function () {
 	$("#logout").on("click", function(e) {
 		e.preventDefault();
 		window.swal({
-          title: "Logout!",
-          text: "Do you want to logout?",
+          title: "Cerrar!",
+          text: "Esta seguro de cerrar?",
           icon: "warning",
           buttons: true,
           dangerMode: false,

@@ -330,8 +330,8 @@ function (
         e.preventDefault();
         var d = dt.DataTable().row( $(this).closest("tr") ).data();
         window.swal({
-          title: "Delete!",
-          text: "Are You Sure?",
+          title: "Eliminar!",
+          text: "Estas Seguro?",
           icon: "warning",
           buttons: {
 			cancel: true,
