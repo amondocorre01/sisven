@@ -397,11 +397,11 @@ function guardarMerma(e){
     stock = parseFloat(stock);
     cantidad = parseFloat(cantidad);
     if(cantidad <= 0){
-      alert('Ingrese una cantidad mayor a 0');
+      window.swal('Aviso','Ingrese una cantidad mayor a 0',"error");
       return;
     }
     if(cantidad > stock){
-      alert('La cantidad ingresada es mayor que el stock');
+      window.swal('Aviso','La cantidad ingresada es mayor que el stock',"error");
       return;
     }
     $(e).attr('disabled',true);
@@ -431,6 +431,9 @@ function guardarMerma(e){
         return;
       }
     });
+  }else{
+    window.swal('Aviso','Ingrese una cantidad mayor a 0',"error");
+    return;
   }
 }
     
