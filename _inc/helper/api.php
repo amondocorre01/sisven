@@ -48,9 +48,17 @@ function getProducts(){
 	$model = registry()->get('loader')->model('product');
 	return $model->getProducts();
 }
-
+function getProductsAll(){
+	$model = registry()->get('loader')->model('product');
+	return $model->getProductsAll();
+}
 function getConceptosCostosImportacion(){
 	$model = registry()->get('loader')->model('purchase');
 	return $model->getConceptosCostosImportacion();
+}
+
+function getBajasProductos(){
+	$model = registry()->get('loader')->model('product');
+	return $model->getBajasProductos();
 }
 ?>
