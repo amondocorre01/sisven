@@ -48,7 +48,10 @@ function getProducts(){
 	$model = registry()->get('loader')->model('product');
 	return $model->getProducts();
 }
-
+function getProductsAll(){
+	$model = registry()->get('loader')->model('product');
+	return $model->getProductsAll();
+}
 function getConceptosCostosImportacion(){
 	$model = registry()->get('loader')->model('purchase');
 	return $model->getConceptosCostosImportacion();
@@ -63,4 +66,38 @@ function getProveedores(){
 	$model = registry()->get('loader')->model('supplier');
 	return $model->getSuppliers(null,null);
 }
-?>
+
+function getBajasProductos(){
+	$model = registry()->get('loader')->model('product');
+	return $model->getBajasProductos();
+}
+
+function getCompras($fecha_inicial,$fecha_final,$store_id,$product_id){
+	$model = registry()->get('loader')->model('purchase');
+	return $model->getCompras($fecha_inicial,$fecha_final,$store_id,$product_id);
+}
+function getVentas($fecha_inicial,$fecha_final,$store_id,$product_id){
+	$model = registry()->get('loader')->model('invoice');
+	return $model->getVentas($fecha_inicial,$fecha_final,$store_id,$product_id);
+}
+
+function getTransferenciasSalida($fecha_inicial,$fecha_final,$store_id,$product_id){
+	$model = registry()->get('loader')->model('transfer');
+	return $model->getTransferenciasSalida($fecha_inicial,$fecha_final,$store_id,$product_id);
+}
+function getTransferenciasEntrada($fecha_inicial,$fecha_final,$store_id,$product_id){
+	$model = registry()->get('loader')->model('transfer');
+	return $model->getTransferenciasEntrada($fecha_inicial,$fecha_final,$store_id,$product_id);
+}
+function limpiarKardex($iden){
+	$model = registry()->get('loader')->model('transfer');
+	return $model->limpiarKardex($iden);
+}
+function agregarKardex($iden,$fecha,$detalle,$ingreso,$salida,$pCosto,$ingVal,$salVal){
+	$model = registry()->get('loader')->model('transfer');
+	return $model->agregarKardex($iden,$fecha,$detalle,$ingreso,$salida,$pCosto,$ingVal,$salVal);
+}
+function obtenerKardex($iden){
+	$model = registry()->get('loader')->model('transfer');
+	return $model->obtenerKardex($iden);
+}

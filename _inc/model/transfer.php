@@ -47,4 +47,43 @@ class ModelTransfer extends Model
         }
         return $array;
     }
+
+    public function getTransferenciasSalida($fecha_inicial,$fecha_final,$store_id,$product_id){
+        $sql ="select *,
+        (SELECT pit.item_purchase_price FROM purchase_item pit WHERE t.invoice_id=pit.invoice_id AND pit.item_id='$product_id') AS precio
+        , (DATE_FORMAT(t.created_at, '%Y-%m-%d')) as fecha FROM transfers t, transfer_items ti WHERE t.id=ti.transfer_id AND t.from_store_id='$store_id' AND ti.product_id='$product_id' AND t.created_at >='$fecha_inicial'  AND t.created_at<='$fecha_final' ORDER BY t.created_at asc";
+        $statement = $this->db->prepare($sql);
+		$statement->execute();
+        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $products;
+	}
+
+    public function getTransferenciasEntrada($fecha_inicial,$fecha_final,$store_id,$product_id){
+        $sql ="select *,
+        (SELECT pit.item_purchase_price FROM purchase_item pit WHERE t.invoice_id=pit.invoice_id AND pit.item_id='$product_id') AS precio
+        , (DATE_FORMAT(t.created_at, '%Y-%m-%d')) as fecha FROM transfers t, transfer_items ti WHERE t.id=ti.transfer_id AND t.to_store_id='$store_id' AND ti.product_id='$product_id' AND t.created_at >='$fecha_inicial'  AND t.created_at<='$fecha_final' ORDER BY t.created_at asc";
+        $statement = $this->db->prepare($sql);
+		$statement->execute();
+        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $products;
+	}
+    public function agregarKardex($iden,$fecha,$detalle,$ingreso,$salida,$pCosto,$ingVal,$salVal){
+        $sql ="insert into kardex(sesion,fecha,detalle,ingreso,salida,pCosto,ingVal,salVal)values('$iden','$fecha','$detalle','$ingreso','$salida','$pCosto','$ingVal','$salVal');";
+        $statement = $this->db->prepare($sql);
+		$statement->execute();
+    }
+
+    public function limpiarKardex($iden){
+        $sql ="delete from kardex where sesion='$iden';";
+        $statement = $this->db->prepare($sql);
+		$statement->execute();
+    }
+
+    public function obtenerKardex($iden){
+        $sql ="select * from kardex where sesion='$iden' order by fecha asc;";
+        $statement = $this->db->prepare($sql);
+		$statement->execute();
+        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $products;
+    }
 }

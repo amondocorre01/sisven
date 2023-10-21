@@ -471,6 +471,15 @@ class ModelProduct extends Model
 		return $products;
 	}
 
+	public function getBajasProductos(){
+		$statement = $this->db->prepare("select *,(SELECT NAME FROM stores WHERE store_id=bp.store_id ) AS store , 
+		(SELECT p_name FROM products WHERE p_id=bp.product_id ) AS product 
+		FROM bajas_productos bp;");
+		$statement->execute();
+		$products = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $products;
+	}
+
 	public function getProductImages($product_id) 
 	{
 		$statement = $this->db->prepare("SELECT * FROM `product_images` WHERE `product_images`.`product_id` = ? ORDER BY `sort_order` ASC");

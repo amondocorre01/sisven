@@ -425,6 +425,16 @@
                 </a>
               </li>
             <?php endif; ?>
+
+            <?php if (user_group_id() == 1 || has_permission('access', 'read_stock_alert')): ?>
+              <li class="<?php echo current_nav() == 'stock_alert' ? ' active' : null; ?>">
+                <a href="salida_merma.php">
+                  <svg class="svg-icon"><use href="#icon-alert"></svg>
+                  SALIDA DE MERMA
+                </a>
+              </li>
+            <?php endif; ?>
+
             <?php if (get_preference('expiry_yes') && (user_group_id() == 1 || has_permission('access', 'read_expired_product'))): ?>
               <li class="<?php echo current_nav() == 'expired' ? ' active' : null; ?>">
                 <a href="expired.php">
@@ -787,15 +797,6 @@
 
           <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
             <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
-              <a href="kardex_productos.php">
-                <svg class="svg-icon"><use href="#icon-eye"></svg>
-                KARDEX PRODUCTOS
-              </a>
-            </li>
-          <?php endif; ?>
-
-          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')) : ?>
-            <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
               <a href="report_products.php">
                 <svg class="svg-icon"><use href="#icon-eye"></svg>
                 REPORTES X PRODUCTO
@@ -838,6 +839,15 @@
               </a>
             </li>
           <?php endif; ?>
+
+          <?php if (user_group_id() == 1 || has_permission('access', 'read_overview_report')): ?>
+              <li class="<?php echo current_nav() == 'report_overview' ? ' active' : null; ?>">
+                <a href="kardex_valorado.php">
+                  <svg class="svg-icon"><use href="#icon-alert"></svg>
+                  KARDEX VALORADO
+                </a>
+              </li>
+            <?php endif; ?>
 
           <?php if (user_group_id() == 1 || has_permission('access', 'read_collection_report')) : ?>
             <li class="<?php echo current_nav() == 'report_collection' ? ' active' : null; ?>">
