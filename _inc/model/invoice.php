@@ -749,4 +749,10 @@ class ModelInvoice extends Model
         $statement->execute(array($store_id));
         return $statement->rowCount();
     }
+    public function getVentas($fecha_inicial,$fecha_final,$store_id,$product_id){
+        $statement = $this->db->prepare("select * , (DATE_FORMAT(pur.created_at, '%Y-%m-%d')) as fecha FROM selling_info pur, selling_item pit WHERE pur.status=1 and pur.invoice_id= pit.invoice_id AND pit.store_id = '$store_id' AND pit.item_id='$product_id' AND pur.created_at >='$fecha_inicial' AND pur.created_at <='$fecha_final' ORDER BY pur.created_at asc;");
+		$statement->execute();
+        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $products;
+	}
 }

@@ -460,11 +460,16 @@ function (
     // Create new purchase
     $(document).delegate("#create-purchase-submit", "click", function(e) {
         e.preventDefault();
-        var $tag = $(this);
-        var $btn = $tag.button("loading");
         let datos_imp = localStorage.getItem('importacion');
-        datos_imp = JSON.parse(datos_imp);
-        $('#field_importacion').val(JSON.stringify(datos_imp));
+        if(datos_imp){
+            var $tag = $(this);
+            var $btn = $tag.button("loading");
+            datos_imp = JSON.parse(datos_imp);
+            $('#field_importacion').val(JSON.stringify(datos_imp));
+        }else{
+            alert('Agregue Costos de Importación');
+            return;
+        }
 
         var form = $($tag.data("form"));
         form.find(".alert").remove();
