@@ -231,6 +231,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
         $category_id = $product['category_id'];
         $brand_id = $the_product['brand_id'];
         $item_purchase_price = $product['purchase_price'];
+        $new_item_purchase_price = $product['new_purchase_price'];
         $item_selling_price = $product['sell_price'];
         $item_quantity = $product['quantity'];
         $item_tax = $product['tax_amount'];
@@ -251,11 +252,13 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
         
         // Insert purchase item
         $statement = db()->prepare("INSERT INTO `purchase_item` (invoice_id, store_id, item_id, category_id, brand_id, item_name, item_purchase_price, item_selling_price, item_quantity, status, item_total, item_tax, tax_method, tax, gst, cgst, sgst, igst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $statement->execute(array($invoice_id, $store_id, $id, $category_id, $brand_id, $item_name, $item_purchase_price, $item_selling_price, $item_quantity, $status, $item_total, $item_tax, $tax_method, $taxrate, $taxrate, $cgst, $sgst, $igst));
+        //$statement->execute(array($invoice_id, $store_id, $id, $category_id, $brand_id, $item_name, $item_purchase_price, $item_selling_price, $item_quantity, $status, $item_total, $item_tax, $tax_method, $taxrate, $taxrate, $cgst, $sgst, $igst));
+        $statement->execute(array($invoice_id, $store_id, $id, $category_id, $brand_id, $item_name, $new_item_purchase_price, $item_selling_price, $item_quantity, $status, $item_total, $item_tax, $tax_method, $taxrate, $taxrate, $cgst, $sgst, $igst));
         
         // Update stock quantity
         $statement = db()->prepare("UPDATE `product_to_store` SET `purchase_price` = ?, `sell_price` = ?, `quantity_in_stock` = `quantity_in_stock` + $item_quantity WHERE `product_id` = ? AND `store_id` = ?");
-        $statement->execute(array($item_purchase_price, $item_selling_price, $id, $store_id));
+        //$statement->execute(array($item_purchase_price, $item_selling_price, $id, $store_id));
+        $statement->execute(array($new_item_purchase_price, $item_selling_price, $id, $store_id));
     }
     //datos de importacion
     if(isset($_POST['importacion'])){
@@ -266,13 +269,12 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
 
       $nro_orden = $dat->nro_orden;
       $razon_social =$dat->razon_social;
-      $proveeedor =$dat->proveedor;
+      $proveeedor = $sup_id;
       $nro_dui = $dat->nro_dui;
       $almacen_destino = $dat->almacen_destino;
       $fecha = $dat->fecha;
-      $productos = $dat->productos_data;
 
-      $sql = "insert into hoja_importacion(invoice_id,nro_orden,razon_social,proveedor,nro_dui,almacen_destino,fecha,productos,estado)values('$invoice_id','$nro_orden','$razon_social','$proveeedor','$nro_dui','$almacen_destino','$fecha','$productos','1')";
+      $sql = "insert into hoja_importacion(invoice_id,nro_orden,razon_social,proveedor,nro_dui,almacen_destino,fecha,estado)values('$invoice_id','$nro_orden','$razon_social','$proveeedor','$nro_dui','$almacen_destino','$fecha','1')";
       //var_dump($sql);
       db()->query($sql);
       foreach ($importaciones as $key => $value) {
@@ -764,10 +766,18 @@ $columns = array(
         'dt' => 'invoice_id',
         'formatter' => function( $d, $row) {
             $o = $row['invoice_id'];           
-            //return $o;
-            return '<a href="purchase_importacion.php?ver_hoja_importacion='.$o.'">'.$o.'</a>';
+            return $o;
+            //return '<a href="purchase_importacion.php?ver_hoja_importacion='.$o.'">'.$o.'</a>';
         }
     ),
+    array(
+      'db' => 'invoice_id',
+      'dt' => 'enlace_importacion',
+      'formatter' => function( $d, $row) {
+          $o = $row['invoice_id'];    
+          return '<a class="btn btn-sm btn-block btn-primary" target="_blank" href="purchase_importacion.php?ver_hoja_importacion='.$o.'">IMP.</a>';
+      }
+  ),
     array( 
       'db' => 'created_at',   
       'dt' => 'created_at' ,
@@ -790,7 +800,7 @@ $columns = array(
         'formatter' => function( $d, $row) {
             $the_user = get_the_user($row['created_by']);
             if (isset($the_user['id'])) {
-                return '<a href="user.php?user_id=' . $the_user['id'] . '&username='.$the_user['username'].'">' . $the_user['username'] . '</a>';
+                return '<a href="user.php?user_id=' . $the_user['id'] . '&username='.$the_user['username'].'"   >' . $the_user['username'] . '</a>';
             }
             return;
         }

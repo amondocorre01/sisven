@@ -117,26 +117,6 @@ include ("left_sidebar.php");
             </div>
             <div class="row">
               <div class="col-offset-1 col-md-6">
-                    <label for="">Proveedor</label>
-                    <select class="form-control" name="proveedor" id="proveedor">
-                      <option value="">Seleccione</option>
-                      <?php
-                        foreach ($proveeedores as $key => $value) {
-                          $name = $value['sup_name'];
-                          $id_proveedor = $value['supplier_id'];
-                          echo '<option value="'.$id_proveedor.'">'.$name.'</option>';
-                        }
-                      ?>  
-                    <select>
-                </div>
-
-                <div class="col-offset-1 col-md-6">
-                    <label for="">Nro. DUI</label>
-                    <input type="text" class="form-control" name="nro_dui" id="nro_dui" autocomplete="off">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-offset-1 col-md-6">
                     <label for="">Almacen destino</label>
                     <select class="form-control" name="almacen_destino" id="almacen_destino">
                       <option value="">Seleccione</option>
@@ -149,19 +129,41 @@ include ("left_sidebar.php");
                       ?>  
                     <select>
                 </div>
+              <!--
+              <div class="col-offset-1 col-md-6">
+                    <label for="">Proveedor</label>
+                    <select class="form-control" name="proveedor" id="proveedor">
+                      <option value="">Seleccione</option>
+                      <?php
+                        foreach ($proveeedores as $key => $value) {
+                          $name = $value['sup_name'];
+                          $id_proveedor = $value['supplier_id'];
+                          echo '<option value="'.$id_proveedor.'">'.$name.'</option>';
+                        }
+                      ?>  
+                    <select>
+                </div>-->
+
+                <div class="col-offset-1 col-md-6">
+                    <label for="">Nro. DUI</label>
+                    <input type="text" class="form-control" name="nro_dui" id="nro_dui" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                
 
                 <div class="col-offset-1 col-md-6">
                     <label for="">Fecha</label>
                     <input type="date" class="form-control" name="fecha" id= "fecha" autocomplete="off">
                 </div>
             </div>
-
+            <!--
             <div class="row">
               <div class="col-offset-1 col-md-12">
                     <label for="">Productos</label>
                     <input type="text" class="form-control" name="productos_data" id="productos_data" autocomplete="off">
                 </div>
-            </div>
+            </div>-->
 
             <table>
                 <thead>

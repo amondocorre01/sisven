@@ -161,6 +161,7 @@ function (
             {data : "status"},
             {data : "btn_pay"},
             {data : "btn_return"},
+            {data : "enlace_importacion"},
             {data : "btn_view"},
             {data : "btn_edit"},
             {data : "btn_delete"}
@@ -460,7 +461,8 @@ function (
     // Create new purchase
     $(document).delegate("#create-purchase-submit", "click", function(e) {
         e.preventDefault();
-        let datos_imp = localStorage.getItem('importacion');
+        //let datos_imp = localStorage.getItem('importacion');
+        let datos_imp = getDatosImportacion();
         if(datos_imp){
             var $tag = $(this);
             var $btn = $tag.button("loading");
@@ -711,6 +713,7 @@ function (
             $scope.paidAmount = payableAmount;
         });
         $scope.addPaidAmount();
+        calcularTotales();
     };
 
     $scope.addOrderTax = function () {
@@ -771,7 +774,22 @@ function (
         html += "</td>";
         html += "<td class=\"text-right\" data-title=\"Total\">";
         html += "<span class=\"subtotal\" id=\"subtotal-"+data.itemId+"\">"+window.formatDecimal(purchasePrice,2)+"</span>";
-        html += "</td>";    
+        html += "</td>";
+
+        html += "<td class=\"text-right\" data-title=\"Total 1\">";
+        html += "<span  id=\"add2-"+data.itemId+"\">0</span>";
+        html += "</td>";
+
+        html += "<td class=\"text-right\" style=\"padding:2px; min-width:80px;\" data-title=\"Total 2\">";
+        html += "<input id=\"add3-"+data.itemId+"\" value=\"0\" readonly class=\"form-control input-sm text-center new-purchase-price\" type=\"text\" name=\"products["+data.itemId+"][new_purchase_price]\" data-id=\""+data.itemId+"\" data-item=\""+data.itemId+"\" onclick=\"this.select();\" onkeypress=\"return IsNumeric(event);\" ondrop=\"return false;\" onpaste=\"return false;\" onKeyUp=\"if(this.value<0){this.value='1';}\">"
+        html += "</td>";
+
+        html += "<td class=\"text-right\" data-title=\"Total 3\">";
+        html += "<span  id=\"add4-"+data.itemId+"\">0</span>";
+        html += "</td>";
+        
+        
+
         html += "<td class=\"text-center\">";
         html += "<i class=\"fa fa-close text-red pointer remove\" data-id=\""+data.itemId+"\" title=\"Remove\"></i>";
         html += "</td>";
@@ -865,6 +883,9 @@ function (
         $("#paid-amount").val(0);
         $("#image_thumb img").attr("src", "../assets/itsolution24/img/noimage.jpg");
         $("#image").val("");
+        //$("#form-purchase").trigger('reset');
+        //$("#form-purchase")[0].reset() 
+        resetFormulario();
     });
 
 

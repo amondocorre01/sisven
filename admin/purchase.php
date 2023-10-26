@@ -202,6 +202,9 @@ include ("left_sidebar.php") ;
                       <?php echo trans('label_return'); ?>
                     </th>
                     <th class="w-5">
+                      HOJA IMP.
+                    </th>
+                    <th class="w-5">
                       <?php echo trans('label_view'); ?>
                     </th>
                     <th class="w-5">
@@ -243,6 +246,9 @@ include ("left_sidebar.php") ;
                     </th>
                     <th class="w-5">
                       <?php echo trans('label_return'); ?>
+                    </th>
+                    <th class="w-5">
+                      HOJA IMP.
                     </th>
                     <th class="w-5">
                       <?php echo trans('label_view'); ?>
