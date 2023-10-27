@@ -153,7 +153,7 @@
                   <th class="w-25p">&nbsp;</th>
                   <th class="w-25p">&nbsp;</th>
                 </tr>
-                <tr class="bg-gray">
+                <tr class="bg-gray" hidden>
                   <th class="text-right" colspan="6">
                     <?php echo trans('label_order_tax');?> (%)
                   </th>
@@ -165,7 +165,7 @@
                   <th class="w-25p">&nbsp;</th>
                   <th class="w-25p">&nbsp;</th>
                 </tr>
-                <tr class="bg-gray">
+                <tr class="bg-gray" hidden>
                   <th class="text-right" colspan="6">
                     <?php echo trans('label_shipping_charge'); ?>
                   </th>
@@ -177,7 +177,7 @@
                   <th class="w-25p">&nbsp;</th>
                   <th class="w-25p">&nbsp;</th>
                 </tr>
-                <tr class="bg-gray">
+                <tr class="bg-gray" hidden>
                   <th class="text-right" colspan="6">
                     <?php echo trans('label_others_charge'); ?>
                   </th>
@@ -189,7 +189,7 @@
                   <th class="w-25p">&nbsp;</th>
                   <th class="w-25p">&nbsp;</th>
                 </tr>
-                <tr class="bg-gray">
+                <tr class="bg-gray" hidden>
                   <th class="text-right" colspan="6">
                     <?php echo trans('label_discount_amount'); ?>
                   </th>
@@ -613,7 +613,7 @@ function calcularCostosTabla(){
     let quantity_row = $(`#quantity-${item}`).val();
     let price_total_row = parseFloat(quantity_row) * parseFloat(price_new_pu);
     price_total_row = Number(price_total_row).toFixed(2);
-    $(`#add4-${item}`).html(price_total_row);
+    $(`#add4-${item}`).val(price_total_row);
   });
 
 

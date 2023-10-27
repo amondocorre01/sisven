@@ -784,8 +784,9 @@ function (
         html += "<input id=\"add3-"+data.itemId+"\" value=\"0\" readonly class=\"form-control input-sm text-center new-purchase-price\" type=\"text\" name=\"products["+data.itemId+"][new_purchase_price]\" data-id=\""+data.itemId+"\" data-item=\""+data.itemId+"\" onclick=\"this.select();\" onkeypress=\"return IsNumeric(event);\" ondrop=\"return false;\" onpaste=\"return false;\" onKeyUp=\"if(this.value<0){this.value='1';}\">"
         html += "</td>";
 
-        html += "<td class=\"text-right\" data-title=\"Total 3\">";
-        html += "<span  id=\"add4-"+data.itemId+"\">0</span>";
+        html += "<td class=\"text-right\" style=\"padding:2px; min-width:80px;\" data-title=\"Total 3\">";
+        //html += "<span  id=\"add4-"+data.itemId+"\">0</span>";
+        html += "<input id=\"add4-"+data.itemId+"\" value=\"0\" readonly class=\"form-control input-sm text-center new-subtotal\" type=\"text\" name=\"products["+data.itemId+"][new_subtotal]\" data-id=\""+data.itemId+"\" data-item=\""+data.itemId+"\" onclick=\"this.select();\" onkeypress=\"return IsNumeric(event);\" ondrop=\"return false;\" onpaste=\"return false;\" onKeyUp=\"if(this.value<0){this.value='1';}\">"
         html += "</td>";
         
         

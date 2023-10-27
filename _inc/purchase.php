@@ -217,6 +217,7 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
     $tsgst = 0;
     $tigst = 0;
     $taxrate = 0;
+    $new_total = 0;
     foreach ($request->post['products'] as  $product) {  
         $status = 'active';
         $id = $product['item_id'];
@@ -232,15 +233,20 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
         $brand_id = $the_product['brand_id'];
         $item_purchase_price = $product['purchase_price'];
         $new_item_purchase_price = $product['new_purchase_price'];
+        $new_subtotal = $product['new_subtotal'];
+        $new_subtotal = (float)$new_subtotal;
+        $new_total += $new_subtotal; 
         $item_selling_price = $product['sell_price'];
         $item_quantity = $product['quantity'];
         $item_tax = $product['tax_amount'];
         $tax_method = $product['tax_method'];
         $taxrate = $product['taxrate'];
         if ($tax_method == 'exclusive') {
-            $item_total = ((int)$item_quantity * (float)$item_purchase_price) + $item_tax;
+            //$item_total = ((int)$item_quantity * (float)$item_purchase_price) + $item_tax;
+            $item_total = ((int)$item_quantity * (float)$new_item_purchase_price) + $item_tax;
         } else {
-            $item_total = ((int)$item_quantity * (float)$item_purchase_price);
+            //$item_total = ((int)$item_quantity * (float)$item_purchase_price);
+            $item_total = ((int)$item_quantity * (float)$new_item_purchase_price);
         }
 
         if ($supplier_info['sup_state'] == get_preference('business_state')) {
@@ -260,6 +266,10 @@ if ($request->server['REQUEST_METHOD'] == 'POST' && isset($request->post['action
         //$statement->execute(array($item_purchase_price, $item_selling_price, $id, $store_id));
         $statement->execute(array($new_item_purchase_price, $item_selling_price, $id, $store_id));
     }
+
+    $paid_amount = $new_total;
+    $total_paid = $new_total;
+    $subtotal= $new_total;
     //datos de importacion
     if(isset($_POST['importacion'])){
       $dat = $request->post['importacion'];
